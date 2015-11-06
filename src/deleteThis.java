@@ -2,6 +2,6 @@
 public class deleteThis {
 	//comment
 
-	// here isa comment by josh
+	// here is a comment by josh
 }
 
