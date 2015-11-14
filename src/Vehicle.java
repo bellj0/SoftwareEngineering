@@ -3,13 +3,13 @@ import java.util.ArrayList;
 public class Vehicle 
 {
 	private String vehicleType;
-	private int location;
+	private Location location;
 	private boolean available;
 	private ArrayList<Vehicle> availableVehicles = new ArrayList<Vehicle>();
 	private ArrayList<Vehicle> allVehicles = new ArrayList<Vehicle>();
 
 
-	public Vehicle(String type, int location)
+	public Vehicle(String type, Location location)
 	{
 		setVehicleType(type);
 		setLocation(location);	
@@ -34,12 +34,12 @@ public class Vehicle
 		return this.vehicleType;
 	}
 	
-	public void setLocation(int location)
+	public void setLocation(Location location)
 	{
 		this.location = location;
 	}
 	
-	public int getLocation()
+	public Location getLocation()
 	{
 		return this.location;
 	}

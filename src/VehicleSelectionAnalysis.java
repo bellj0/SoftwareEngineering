@@ -11,7 +11,10 @@ public class VehicleSelectionAnalysis
 	
 	public Vehicle getClosestVehicle(Location location)
 	{
+		Vehicle closest = null;
 		
+		
+		return closest;
 	}
 	
 	public void setSelectedVehicle(Vehicle vehicle)
