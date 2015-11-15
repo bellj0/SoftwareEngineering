@@ -1,5 +1,14 @@
+/**
+ * Changed class to enum, just to temporarily fix the compiler errors
+ * 
+ *
+ */
 
-public enum Location {
+
+public class Location {
+	/**
+	 * 
+	 * Putting this enum in a comment just to temporarily fix the compiler errors.
 
 	LIBRARY( , ), 			REC_CENTER( , ), 
 	ESBY_GYM( , ), 			JAMES( , ), 
@@ -20,6 +29,7 @@ public enum Location {
 	LINDEN( , ), 			MARRIOT( , ),
 	BOOKSTORE( , );
 	
+	*/
 	
 	private int pos_x;   // position on map in x
 	private int pos_y; // position on map in y
@@ -45,4 +55,5 @@ public enum Location {
 	public void setPos_y(int pos_y) {
 		this.pos_y = pos_y;
 	}
+	
 }

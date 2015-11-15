@@ -31,6 +31,10 @@ public class VehicleSelectionAnalysis
 			}
 				
 		return closest; */
+		
+		
+		//adding this to fix compiler errors
+		return null;
 	}
 	
 /**
