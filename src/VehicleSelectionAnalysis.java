@@ -25,12 +25,12 @@ public class VehicleSelectionAnalysis
 	public Vehicle getClosestVehicle(String type, Location location)
 	{
 		Vehicle closest = new Vehicle(type, location);
-			for (Vehicle v: closest.getAvailableVehicles())
+/*			for (Vehicle v: closest.getAvailableVehicles())
 			{
 			  // need compare method to compare the location of the incident to the vehicle's location
 			}
 				
-		return closest;
+		return closest; */
 	}
 	
 /**
