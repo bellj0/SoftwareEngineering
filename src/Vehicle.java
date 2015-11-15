@@ -8,8 +8,6 @@ public class Vehicle
 	private String vehicleType;
 	private Location location;
 	private boolean available;
-	private ArrayList<Vehicle> availableVehicles = new ArrayList<Vehicle>();
-	private ArrayList<Vehicle> allVehicles = new ArrayList<Vehicle>();
 
 /**
  * Creates a new vehicle object and stores it in the list of all vehicles.
@@ -20,7 +18,6 @@ public class Vehicle
 	{
 		setVehicleType(type);
 		setLocation(location);	
-		allVehicles.add(this);
 	}
 
 /**
@@ -65,23 +62,6 @@ public class Vehicle
 	public Location getLocation()
 	{
 		return this.location;
-	}
-
-/**
- * Returns the list of all vehicles that are available to respond to an incident. 
- * @return ArrayList containing all available vehicles.
- */
-	public ArrayList<Vehicle> getAvailableVehicles()
-	{
-		for (Vehicle v: allVehicles)
-		{
-			if (v.isAvailable() == true)
-			{
-				availableVehicles.add(v);
-			}
-		}
-		
-		return availableVehicles;
 	}
 
 /**
