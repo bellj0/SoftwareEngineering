@@ -1,5 +1,5 @@
 /**
- * This class represents the vehicles in the Rowan PD force.  
+ * This module represents the individual vehicles in the Rowan PD force.  
  */
 import java.util.ArrayList;
 
@@ -101,5 +101,5 @@ public class Vehicle
 	{
 		return this.available;
 	}
-
+	
 }
