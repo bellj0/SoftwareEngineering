@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 
-public class MapLocation {
+public class MapLocation 
+{
 	
 	private ArrayList<Integer> position = new ArrayList<Integer>();
 	
-	public ArrayList<Integer> getPosition(Vehicle vehicle) {
+	public ArrayList<Integer> getPosition(Vehicle vehicle) 
+	{
 		
 		Location where = vehicle.getLocation();
 		
@@ -16,11 +18,13 @@ public class MapLocation {
 	}
 
 	// Don't think this will be used
-	public void setPosition(Vehicle vehicle, ArrayList<Integer> position) {
+	public void setPosition(Vehicle vehicle, ArrayList<Integer> position) 
+	{
 		this.position = position;
 	}
 	
-	public ArrayList<Integer> getPosition(Location location) {
+	public ArrayList<Integer> getPosition(Location location) 
+	{
 		position.clear();
 		
 		position.add((Integer)location.getPos_x());
@@ -29,7 +33,8 @@ public class MapLocation {
 	}
 
 	// Don't think this will be used
-	public void setPosition(Location location, ArrayList<Integer> position) {
+	public void setPosition(Location location, ArrayList<Integer> position) 
+	{
 		this.position = position;
 	}
 

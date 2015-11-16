@@ -1,6 +1,7 @@
 /**
  * This module represents the individual vehicles in the Rowan PD force.  
  */
+
 import java.util.ArrayList;
 
 public class Vehicle 
