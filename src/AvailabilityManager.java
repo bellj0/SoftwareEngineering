@@ -55,11 +55,9 @@ public class AvailabilityManager {
 
 	static class Threads extends Thread{
 		int time;
-		Vehicle vehicle;
 		
 		public Threads(int time){
 			this.time = time;
-			this.vehicle = vehicle;
 		}
 		
 		@Override
