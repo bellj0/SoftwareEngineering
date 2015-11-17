@@ -9,7 +9,6 @@ import org.junit.rules.ExpectedException;
 
 public class TestVehicle 
 {
-
 	private Location loc1;
 	private Location loc2;
 	private Vehicle vehicle1;

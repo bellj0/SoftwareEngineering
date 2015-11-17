@@ -21,7 +21,7 @@ public class Location
 	LAUREL( , ), 			OAK( , ), 
 	EVERGREEN( , ), 		MULLICA( , ), 
 	MIMOSA( , ), 			WILLOW( , ), 
-	CHESNUT( , ),			EDGEWOOD( , ), 
+	CHESTNUT( , ),			EDGEWOOD( , ), 
 	TRIAD( , ), 			TOWNHOUSES( , ), 
 	WHITNEY( , ), 			ROWAN_BLVD( , ), 
 	ROBO( , ), 				SAVITZ( , ),
