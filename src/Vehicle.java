@@ -2,8 +2,6 @@
  * This module represents the individual vehicles in the Rowan PD force.  
  */
 
-import java.util.ArrayList;
-
 public class Vehicle 
 {
 	private String vehicleType;
@@ -25,12 +23,16 @@ public class Vehicle
  * Sets the vehicle's type. 
  * @param type The type of the current vehicle.
  */
-	public void setVehicleType(String type)
+	public void setVehicleType(String type) throws IllegalArgumentException, NullPointerException
 	{
-		if (type.equals(null) || type.equals(""))
+		if (type.equals(""))
 		{
-			throw new NullPointerException("Vehicle type cannot be a null or empty string.");
+			throw new IllegalArgumentException("Vehicle type cannot be an empty string.");
 			//to-do : redirect them to re-enter it / or choose car based on best information available
+		}
+		else if (type.equals(null))
+		{
+			throw new NullPointerException("Vehicle type cannot be null.");
 		}
 		else
 		{
@@ -69,7 +71,7 @@ public class Vehicle
  * Sets a vehicle's availability status to either true or false based on the value of the boolean parameter supplied.
  * @param available Boolean value representing whether the vehicle is available (true) or unavailable (false).
  */
-	public void setAvailablity(boolean available)
+	public void setAvailability(boolean available)
 	{
 		this.available = available;
 	}
