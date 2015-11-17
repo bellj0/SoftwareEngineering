@@ -121,7 +121,7 @@ public class Incident {
 	}
 	
 	/**
-	 * Sets the urgency level of the incident
+	 * Sets the urgency level of the incident. Either low, medium, or high.
 	 * @param newUrgency The urgency level of the incident
 	 */
 	public void setUrgency(String newUrgency){
