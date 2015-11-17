@@ -9,8 +9,8 @@
 public class TravelingCalculations {
 	/**
 	 * Calculates the distance from the vehicle to the incident in the x direction
-	 * @param vehcile The vehicle
-	 * @param location The location that the vehicle is traveling to
+	 * @param vehicle The vehicle.
+	 * @param location The location that the vehicle is traveling to.
 	 * @return The distance from the vehicles current location to the location.
 	 */
 	public int calculateDistanceX(Vehicle vehicle, Location location){
@@ -25,8 +25,8 @@ public class TravelingCalculations {
 	
 	/**
 	 * Calculates the distance from the vehicle to the incident in the y direction 
-	 * @param vehcile The vehicle
-	 * @param location The location that the vehicle is traveling to
+	 * @param vehicle The vehicle.
+	 * @param location The location that the vehicle is traveling to.
 	 * @return The distance from the vehicles current location to the location.
 	 */
 	public int calculateDistanceY(Vehicle vehicle, Location location){

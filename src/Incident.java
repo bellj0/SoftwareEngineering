@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Incident {
 	
 	private int incidentNumber; // The number of the incident
-	private int time; // The time the incident occured
-	private String date; // The date the incident occured
+	private int time; // The time the incident occurred
+	private String date; // The date the incident occurred
 	private String type; // The type of incident
 	private String location; // The location of the incident
 	private ArrayList<Vehicle> assignedVehicles = new ArrayList<>(); // The vehicles assigned to be deployed to the incident

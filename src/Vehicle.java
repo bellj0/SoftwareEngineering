@@ -84,5 +84,18 @@ public class Vehicle
 	{
 		return this.available;
 	}
+
+/**
+ * Overrides the equals method. The two vehicles are equal if their vehicle types and their locations are both equal. 
+ * @param firstVehicle The first vehicle being compared. 
+ * @param secondVehicle The second vehicle being compared.
+ * @return True if they are equal, otherwise return false.
+ */
+	public boolean equals(Vehicle firstVehicle, Vehicle secondVehicle) {
+		if (firstVehicle.getVehicleType().equals(secondVehicle.getVehicleType()) && firstVehicle.getLocation().equals(secondVehicle.getLocation()))
+			return true;
+		else
+			return false;
+	}
 	
 }
