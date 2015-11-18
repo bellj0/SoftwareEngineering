@@ -1,19 +1,23 @@
 
 /**
- * This class is in charge of determining the length of time before a vehicle will become 
+ * This class is in charge of managing the length of time before a vehicle will become 
  * available after being deployed to another incident.
 
  * @author Ryan Stump
  *
  */
 public class AvailabilityManager {
+	private TravelingCalculations calc;
 	
-	public AvailabilityManager(Incident incident, Vehicle vehicle){
+	public AvailabilityManager(Incident incident, Vehicle vehicle,Location location){
 		
-		int time = calculateAvailabilityTime(incident);
+		calc = new TravelingCalculations(vehicle,location);
+		int time = calculateAvailabilityTime(incident) + calc.convertDistanceToTime();
 		
 		setAvailabilityClock(time, vehicle);
 	}
+	
+	
 	
 	/**
 	 * Returns the time it will take before a vehicle can become available again after 
