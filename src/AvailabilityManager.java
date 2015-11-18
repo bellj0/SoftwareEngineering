@@ -7,12 +7,12 @@
  *
  */
 public class AvailabilityManager {
-	private TravelingCalculations calc;
+	private TravelingCalculations calculation;
 	
 	public AvailabilityManager(Incident incident, Vehicle vehicle,Location location){
 		
-		calc = new TravelingCalculations(vehicle,location);
-		int time = calculateAvailabilityTime(incident) + calc.convertDistanceToTime();
+		calculation = new TravelingCalculations(vehicle,location);
+		int time = calculateAvailabilityTime(incident) + calculation.convertDistanceToTime();
 		
 		setAvailabilityClock(time, vehicle);
 	}
