@@ -1,5 +1,6 @@
 /**
  * This module represents the individual vehicles in the Rowan PD force.  
+ * @author Stephanie Douglass
  */
 
 public class Vehicle 
@@ -92,7 +93,7 @@ public class Vehicle
  */
 	public void setName()
 	{
-		this.name = vehicle.getVehicleType() + getVehicleNumber();
+		this.name = getVehicleType() + getVehicleNumber();
 		vehicleNumber++;
 	}
 

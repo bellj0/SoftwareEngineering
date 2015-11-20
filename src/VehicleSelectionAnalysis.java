@@ -1,6 +1,7 @@
 /**
  * This module analyzes the location of the incident and the available vehicles of the needed type
  *  in order to determine the closest available vehicle to send to the incident. 
+ *  @author Stephanie Douglass
  */
 public class VehicleSelectionAnalysis 
 {
