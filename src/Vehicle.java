@@ -7,6 +7,8 @@ public class Vehicle
 	private String vehicleType;
 	private Location location;
 	private boolean available;
+	private static int vehicleNumber = 1;
+	private String name;
 
 /**
  * Creates a new vehicle object and stores it in the list of all vehicles.
@@ -86,6 +88,33 @@ public class Vehicle
 	}
 
 /**
+ * Sets the name of the vehicle using its type, followed by its unique int identifier.
+ */
+	public void setName()
+	{
+		this.name = vehicle.getVehicleType() + getVehicleNumber();
+		vehicleNumber++;
+	}
+
+/**
+ * Returns the vehicle's name, consisting of its type and its unique number.
+ * @return The name of the vehicle.
+ */
+	public String getName()
+	{
+		return this.name;
+	}
+
+/**
+ * Returns the vehicle's unique number.
+ * @return The number assigned to the vehicle.
+ */
+	public int getVehicleNumber()
+	{
+		return this.vehicleNumber;
+	}
+
+/**
  * Overrides the equals method. The two vehicles are equal if their vehicle types and their locations are both equal. 
  * @param firstVehicle The first vehicle being compared. 
  * @param secondVehicle The second vehicle being compared.
@@ -96,6 +125,13 @@ public class Vehicle
 			return true;
 		else
 			return false;
+	}
+	
+	public static void main(String[] args){
+		Location loc1 = new Location(4, 5);
+		Vehicle vehicle1 = new Vehicle("SUV", loc1);
+		vehicle1.setName();
+		System.out.println(vehicle1.getName());
 	}
 	
 }
