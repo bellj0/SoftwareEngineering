@@ -20,6 +20,7 @@ public class Vehicle
 	{
 		setVehicleType(type);
 		setLocation(location);	
+		setName();
 	}
 
 /**
@@ -93,7 +94,7 @@ public class Vehicle
  */
 	public void setName()
 	{
-		this.name = getVehicleType() + getVehicleNumber();
+		this.name = this.getVehicleType() + this.getVehicleNumber();
 		vehicleNumber++;
 	}
 
