@@ -106,7 +106,7 @@ public class Incident {
 	
 	/**
 	 * Sets a list of vehicles that are sent to respond to the incident
-	 * @param newVehicles A list of vehicles that are assinged to the incident
+	 * @param newVehicles A list of vehicles that are assigned to the incident
 	 */
 	public void setVehicles(ArrayList<Vehicle> newVehicles){
 		assignedVehicles = newVehicles;

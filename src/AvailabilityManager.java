@@ -47,7 +47,7 @@ public class AvailabilityManager {
 	/**
 	 * A new thread is created and sleeps for the amount of time given.  After the time has passed, 
 	 * it changes the vehicle from unavailable to available.
-	 * @param time	   The time it will take for the vehicle to become avaiable.
+	 * @param time	   The time it will take for the vehicle to become available.
 	 * @param vehicle  The vehicle
 	 */
 	public void setAvailabilityClock (int time, Vehicle vehicle){

@@ -24,7 +24,7 @@ public class IncidentNumberingSystem {
 	}
 	
 	/**
-	 * Returns a list of all txt files in the directory
+	 * Returns a list of all .txt files in the directory
 	 * 
 	 * @param dirName The directory being searched
 	 * @return All of the text files in the directory
