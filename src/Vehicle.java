@@ -129,11 +129,6 @@ public class Vehicle
 			return false;
 	}
 	
-	public static void main(String[] args){
-		Location loc1 = new Location(4, 5);
-		Vehicle vehicle1 = new Vehicle("SUV", loc1);
-		vehicle1.setName();
-		System.out.println(vehicle1.getName());
-	}
+	
 	
 }
