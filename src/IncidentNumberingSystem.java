@@ -7,10 +7,19 @@ import java.io.FilenameFilter;
  *
  */
 public class IncidentNumberingSystem {
+	private Incident incident;
 	
 	public IncidentNumberingSystem(Incident incident){
+		this.incident = incident;
+	}
+	
+	/**
+	 * Used by other classes to set the number of an incident.
+	 */
+	public void setNumber(){
 		incrementAndAssign(incident);
 	}
+	
 	/**
 	 * Finds the most recent incident number and increments it by one
 	 */

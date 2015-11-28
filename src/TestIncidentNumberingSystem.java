@@ -9,13 +9,12 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 
-public class TestAvailabilityManager
+public class TestIncidentNumberingSystem
 {
 	private Incident incident;
 	private Vehicle vehicle;
 	private ArrayList<Vehicle> assignedVehicles;
 	private Location location = Location.LIBRARY;
-	private AvailabilityManager manager;
 	
 	@Before
 	public void setUp() throws Exception 
@@ -24,7 +23,6 @@ public class TestAvailabilityManager
 		vehicle = new Vehicle("Cruiser",location);
 		assignedVehicles.add(vehicle);
 		incident = new Incident(1,900,"December 4th, 2015","Stabbing",location,assignedVehicles,"High");
-		manager = new AvailabilityManager(incident,vehicle,location);
 	}
 
 	@After
@@ -37,20 +35,14 @@ public class TestAvailabilityManager
 	public ExpectedException exception = ExpectedException.none();
 
 	@Test
-	public void testCalculateAvailabilityTime() 
+	public void testSetNumber() 
 	{
-		assertEquals(3000,manager.calculateAvailabilityTime(incident));
+		IncidentNumberingSystem system = new IncidentNumberingSystem(incident);
+		system.setNumber();
+		IncidentNumberingSystem system2 = new IncidentNumberingSystem(incident);
+		int previousNumber = incident.getNumber();
+		Incident incident2 = new Incident(1,900,"December 4th, 2015","Stabbing",location,assignedVehicles,"High");
+		system2.setNumber();
+		assertEquals(previousNumber+1,incident2.getNumber());
 	}
-	
-	
-	@Test
-	public void testSetAvailabilityClock() throws InterruptedException{
-		manager.setAvailabilityClock(3000,vehicle);
-		assertEquals(false,vehicle.isAvailable());
-		wait(4000);
-		assertEquals(true,vehicle.isAvailable());
-	}
-
-
-	
 }
