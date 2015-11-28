@@ -9,6 +9,8 @@ import javax.swing.border.BevelBorder;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 
 public class VehicleCommandGUI extends JFrame {
@@ -17,7 +19,7 @@ public class VehicleCommandGUI extends JFrame {
 	private JLabel mapLabel;
 	
 	private ImageIcon closestVehicle;
-	private ImageIcon incidentLocation;
+	private ImageIcon incLocation;
 
 	private JPanel contentPane;
 	private JCheckBox vehicleType_1;
@@ -71,8 +73,12 @@ public class VehicleCommandGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(5,5));
+	
 		
 		rowanMap = new ImageIcon(getClass().getResource("rowanMap.jpg"));
+		closestVehicle = new ImageIcon(getClass().getResource("closest.jpg"));
+		incLocation = new ImageIcon(getClass().getResource("location.jpg"));
+		
 		mapLabel = new JLabel(rowanMap);
 		
 		contentPane.add(mapLabel, BorderLayout.NORTH);
@@ -202,6 +208,18 @@ public class VehicleCommandGUI extends JFrame {
 		locationSelection.add(lblLocationSelection, BorderLayout.NORTH);
 		
 		listOfLocations = new JList(Location.values());
+		
+		// Will be used to repaint the map with the location indicated (if I can figure out how)
+		listOfLocations.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Location incidentLocation;
+				incidentLocation = (Location)listOfLocations.getSelectedValue();
+				
+				
+			}
+		});
+		
 		listOfLocations.setVisibleRowCount(5);
 		listOfLocations.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
@@ -213,4 +231,5 @@ public class VehicleCommandGUI extends JFrame {
 		contentPane.add(buttonsPanel, BorderLayout.SOUTH);
 		
 	}
+	
 }
