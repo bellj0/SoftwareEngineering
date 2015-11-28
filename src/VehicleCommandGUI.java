@@ -6,6 +6,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -17,8 +18,6 @@ public class VehicleCommandGUI extends JFrame {
 	
 	private ImageIcon closestVehicle;
 	private ImageIcon incidentLocation;
-	
-	
 
 	private JPanel contentPane;
 	private JCheckBox vehicleType_1;
@@ -29,10 +28,19 @@ public class VehicleCommandGUI extends JFrame {
 	private JCheckBox vehicleType_6;
 	private JCheckBox vehicleType_7;
 	private JCheckBox vehicleType_8;
+
 	private JButton btnReportIncident;
 	private JButton btnReset;
-	private JPanel incidentSelection;
+	private JButton btnPrintLog;
 
+	private JPanel incidentSelection;
+	private JPanel locationSelection;
+	private JLabel lblIncidentSelection;
+	private JLabel lblLocationSelection;
+	private JList listOfLocations;
+	private Component verticalStrut;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -42,6 +50,7 @@ public class VehicleCommandGUI extends JFrame {
 				try {
 					VehicleCommandGUI frame = new VehicleCommandGUI();
 					frame.setVisible(true);
+					frame.pack();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,7 +70,7 @@ public class VehicleCommandGUI extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(10,10));
+		contentPane.setLayout(new BorderLayout(5,5));
 		
 		rowanMap = new ImageIcon(getClass().getResource("rowanMap.jpg"));
 		mapLabel = new JLabel(rowanMap);
@@ -70,20 +79,21 @@ public class VehicleCommandGUI extends JFrame {
 		
 		JPanel userInput = new JPanel();
 		FlowLayout fl_userInput = new FlowLayout();
-		fl_userInput.setHgap(30);
+		fl_userInput.setVgap(10);
+		fl_userInput.setHgap(75);
 		userInput.setLayout(fl_userInput);
 		
 		
 		JPanel recVehicle = new JPanel();
 		recVehicle.setLayout(new BorderLayout(0, 10));
 		recVehicle.setToolTipText("Recommended Vehicles");
-		recVehicle.setBorder(new LineBorder(Color.GRAY));
+		recVehicle.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
 		
 		JLabel recVehiclesLabel = new JLabel("Recommended Vehicle Types");
 		recVehiclesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JPanel recVehicleBoxes = new JPanel();
-		recVehicleBoxes.setLayout(new GridLayout(0, 2, 10, 2));
+		recVehicleBoxes.setLayout(new GridLayout(0, 2, 10, 0));
 		vehicleType_1 = new JCheckBox("vehicleType_1");
 		vehicleType_2 = new JCheckBox("vehicleType_2");
 		vehicleType_3 = new JCheckBox("vehicleType_3");
@@ -112,10 +122,6 @@ public class VehicleCommandGUI extends JFrame {
 		FlowLayout fl_buttonsPanel = new FlowLayout();
 		fl_buttonsPanel.setHgap(50);
 		buttonsPanel.setLayout(fl_buttonsPanel);
-		
-		
-		
-		
 
 		
 		btnReportIncident = new JButton("Report Inicident");
@@ -126,6 +132,14 @@ public class VehicleCommandGUI extends JFrame {
 				
 			}
 		});
+		
+		
+		btnPrintLog = new JButton("Print Log");
+		btnPrintLog.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});	
 		
 		
 		btnReset = new JButton("Reset Form");
@@ -150,10 +164,17 @@ public class VehicleCommandGUI extends JFrame {
 				vehicleType_7.setSelected(false);
 				vehicleType_8.setSelected(false);
 				
+				
+				listOfLocations.clearSelection();
+				
 			}
 		});
 		
+
+	
+		
 		buttonsPanel.add(btnReportIncident);
+		buttonsPanel.add(btnPrintLog);
 		buttonsPanel.add(btnReset);
 		
 		
@@ -161,7 +182,34 @@ public class VehicleCommandGUI extends JFrame {
 		contentPane.add(userInput, BorderLayout.CENTER);
 		
 		incidentSelection = new JPanel();
+		incidentSelection.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		userInput.add(incidentSelection);
+		
+		lblIncidentSelection = new JLabel("Incident Selection");
+		lblIncidentSelection.setHorizontalAlignment(SwingConstants.CENTER);
+		incidentSelection.add(lblIncidentSelection);
+		
+		locationSelection = new JPanel();
+		locationSelection.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		userInput.add(locationSelection);
+		locationSelection.setLayout(new BorderLayout(5, 10));
+		
+		
+		
+		lblLocationSelection = new JLabel("Location Selection");
+		lblLocationSelection.setHorizontalAlignment(SwingConstants.CENTER);
+				
+		locationSelection.add(lblLocationSelection, BorderLayout.NORTH);
+		
+		listOfLocations = new JList(Location.values());
+		listOfLocations.setVisibleRowCount(5);
+		listOfLocations.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		JScrollPane locationScroll = new JScrollPane(listOfLocations);
+		
+		locationSelection.add(locationScroll, BorderLayout.CENTER);
+		
+		
 		contentPane.add(buttonsPanel, BorderLayout.SOUTH);
 		
 	}

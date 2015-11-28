@@ -1,8 +1,6 @@
 
 public enum Location 
 {
-
-
 	LIBRARY(370,232), 		REC_CENTER(329,153), 
 	ESBY_GYM(300,161), 		JAMES(246,161), 
 	ROBINSON(270,212), 		WILSON(200,223), 
