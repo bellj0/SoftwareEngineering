@@ -11,10 +11,22 @@ public class Incident {
 	private int time; // The time the incident occurred
 	private String date; // The date the incident occurred
 	private String type; // The type of incident
-	private String location; // The location of the incident
+	private Location location; // The location of the incident
 	private ArrayList<Vehicle> assignedVehicles = new ArrayList<>(); // The vehicles assigned to be deployed to the incident
 	private String urgency; // The urgency of the incident
 	
+	
+	public Incident(int incidentNumber, int time, String date, String type, Location location,
+			ArrayList<Vehicle> assignedVehicles, String urgency){
+		this.incidentNumber = incidentNumber;
+		this.time = time;
+		this.date = date;
+		this.type = type;
+		this.location = location;
+		this.assignedVehicles = assignedVehicles;
+		this.urgency = urgency;
+		
+	}
 	/**
 	 * Returns the number of the incident.
 	 * @return The number of the incident
@@ -84,7 +96,7 @@ public class Incident {
 	 * Returns the location where the incident occurred
 	 * @return The location of the incident
 	 */
-	public String getLocation(){
+	public Location getLocation(){
 		return location;
 	}
 	
@@ -92,7 +104,7 @@ public class Incident {
 	 * Sets the location where the incident occurred
 	 * @param newLocation The location of the incident
 	 */
-	public void setLocation(String newLocation){
+	public void setLocation(Location newLocation){
 		location = newLocation;
 	}
 	
@@ -126,6 +138,15 @@ public class Incident {
 	 */
 	public void setUrgency(String newUrgency){
 		urgency = newUrgency;
+	}
+	
+	public String vehiclesToString(){
+		String result = "";
+		ArrayList<Vehicle> vehicles = getVehicles();
+		for(int i=0;i<vehicles.size();i++){
+			result += vehicles.get(i) + " ";
+		}
+		return result;
 	}
 	
 }

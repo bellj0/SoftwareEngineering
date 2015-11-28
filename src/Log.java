@@ -58,7 +58,7 @@ public class Log {
 		int time = incident.getTime();
 		String date = incident.getDate();
 		String type = incident.getType();
-		String location = incident.getLocation();
+		Location location = incident.getLocation();
 		String urgency = incident.getUrgency();
 		ArrayList<Vehicle> assignedVehicles = new ArrayList<Vehicle>();
 		assignedVehicles = incident.getVehicles();
