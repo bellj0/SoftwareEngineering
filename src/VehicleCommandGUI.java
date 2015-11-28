@@ -6,6 +6,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class VehicleCommandGUI extends JFrame {
@@ -27,6 +29,9 @@ public class VehicleCommandGUI extends JFrame {
 	private JCheckBox vehicleType_6;
 	private JCheckBox vehicleType_7;
 	private JCheckBox vehicleType_8;
+	private JButton btnReportIncident;
+	private JButton btnReset;
+	private JPanel incidentSelection;
 
 	/**
 	 * Launch the application.
@@ -50,61 +55,114 @@ public class VehicleCommandGUI extends JFrame {
 	public VehicleCommandGUI() {
 		setTitle("Vehicle Command and Control System");
 		setResizable(false);
-		
-		rowanMap = new ImageIcon(getClass().getResource("rowanMap.jpg"));
-		mapLabel = new JLabel(rowanMap);
-		mapLabel.setEnabled(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 800);
+		setBounds(50, 50, 950, 800);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(new BorderLayout(10,10));
+		
+		rowanMap = new ImageIcon(getClass().getResource("rowanMap.jpg"));
+		mapLabel = new JLabel(rowanMap);
 		
 		contentPane.add(mapLabel, BorderLayout.NORTH);
 		
 		JPanel userInput = new JPanel();
-		userInput.setLayout(new FlowLayout());
+		FlowLayout fl_userInput = new FlowLayout();
+		fl_userInput.setHgap(30);
+		userInput.setLayout(fl_userInput);
 		
 		
 		JPanel recVehicle = new JPanel();
+		recVehicle.setLayout(new BorderLayout(0, 10));
 		recVehicle.setToolTipText("Recommended Vehicles");
 		recVehicle.setBorder(new LineBorder(Color.GRAY));
 		
+		JLabel recVehiclesLabel = new JLabel("Recommended Vehicle Types");
+		recVehiclesLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel recVehicleBoxes = new JPanel();
+		recVehicleBoxes.setLayout(new GridLayout(0, 2, 10, 2));
 		vehicleType_1 = new JCheckBox("vehicleType_1");
-		
 		vehicleType_2 = new JCheckBox("vehicleType_2");
-		
 		vehicleType_3 = new JCheckBox("vehicleType_3");
-		
 		vehicleType_4 = new JCheckBox("vehicleType_4");
-		
 		vehicleType_5 = new JCheckBox("vehicleType_5");
-		
 		vehicleType_6 = new JCheckBox("vehicleType_6");
-		
 		vehicleType_7 = new JCheckBox("vehicleType_7");
-		
 		vehicleType_8 = new JCheckBox("vehicleType_8");
-
+		
+		recVehicleBoxes.add(vehicleType_1);
+		recVehicleBoxes.add(vehicleType_2);
+		recVehicleBoxes.add(vehicleType_3);
+		recVehicleBoxes.add(vehicleType_4);
+		recVehicleBoxes.add(vehicleType_5);
+		recVehicleBoxes.add(vehicleType_6);
+		recVehicleBoxes.add(vehicleType_7);
+		recVehicleBoxes.add(vehicleType_8);
+		
+		
+		recVehicle.add(recVehiclesLabel, BorderLayout.NORTH);
+		recVehicle.add(recVehicleBoxes);
+		
 		userInput.add(recVehicle);
-		recVehicle.setLayout(new GridLayout(0, 2, 0, 0));
-		recVehicle.add(vehicleType_1);
-		recVehicle.add(vehicleType_2);
-		recVehicle.add(vehicleType_3);
-		recVehicle.add(vehicleType_4);
-		recVehicle.add(vehicleType_5);
-		recVehicle.add(vehicleType_6);
-		recVehicle.add(vehicleType_7);
-		recVehicle.add(vehicleType_8);
+		
+		JPanel buttonsPanel = new JPanel();
+		FlowLayout fl_buttonsPanel = new FlowLayout();
+		fl_buttonsPanel.setHgap(50);
+		buttonsPanel.setLayout(fl_buttonsPanel);
 		
 		
 		
 		
-		
-		
-		
-		contentPane.add(userInput, BorderLayout.CENTER);
-	}
 
+		
+		btnReportIncident = new JButton("Report Inicident");
+		btnReportIncident.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+		});
+		
+		
+		btnReset = new JButton("Reset Form");
+		btnReset.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				contentPane.remove(mapLabel);
+				
+				rowanMap = new ImageIcon(getClass().getResource("rowanMap.jpg"));
+				mapLabel = new JLabel(rowanMap);
+				
+				contentPane.add(mapLabel, BorderLayout.NORTH);
+				
+				// Reset/unselect all of the recommended vehicles
+				vehicleType_1.setSelected(false);
+				vehicleType_2.setSelected(false);
+				vehicleType_3.setSelected(false);
+				vehicleType_4.setSelected(false);
+				vehicleType_5.setSelected(false);
+				vehicleType_6.setSelected(false);
+				vehicleType_7.setSelected(false);
+				vehicleType_8.setSelected(false);
+				
+			}
+		});
+		
+		buttonsPanel.add(btnReportIncident);
+		buttonsPanel.add(btnReset);
+		
+		
+	
+		contentPane.add(userInput, BorderLayout.CENTER);
+		
+		incidentSelection = new JPanel();
+		userInput.add(incidentSelection);
+		contentPane.add(buttonsPanel, BorderLayout.SOUTH);
+		
+	}
 }

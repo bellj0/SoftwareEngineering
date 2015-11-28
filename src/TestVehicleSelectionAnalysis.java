@@ -16,8 +16,8 @@ public class TestVehicleSelectionAnalysis
 	@Before
 	public void setUp() throws Exception 
 	{
-		this.loc1 = new Location(1, 5);
-		this.loc2 = new Location(3, 4);
+		this.loc1 = Location.BOOKSTORE;
+		this.loc2 = Location.EDGEWOOD;
 		this.vehicle1 = new Vehicle("Cruiser", loc1);
 		this.vehicle2 = new Vehicle("K9", loc2);
 	}

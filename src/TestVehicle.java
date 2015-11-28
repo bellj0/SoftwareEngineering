@@ -17,8 +17,8 @@ public class TestVehicle
 	@Before
 	public void setUp() throws Exception 
 	{
-		this.loc1 = new Location(1, 5);
-		this.loc2 = new Location(3, 4);
+		this.loc1 = Location.BOOKSTORE;
+		this.loc2 = Location.EDGEWOOD;
 		this.vehicle1 = new Vehicle("Cruiser", loc1);
 		this.vehicle2 = new Vehicle("K9", loc2);
 	}
@@ -38,7 +38,7 @@ public class TestVehicle
 	@Test
 	public void testVehicle() 
 	{
-		Location loc3 = new Location(6, 8);
+		Location loc3 = Location.CHESTNUT;
 		Vehicle vehicle3 = new Vehicle("Cruiser", loc3);
 		assertEquals("Cruiser", vehicle3.getVehicleType());
 	}
