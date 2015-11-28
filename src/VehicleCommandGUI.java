@@ -164,7 +164,7 @@ public class VehicleCommandGUI extends JFrame {
 				vehicleType_7.setSelected(false);
 				vehicleType_8.setSelected(false);
 				
-				
+				// Resets the selection of a location
 				listOfLocations.clearSelection();
 				
 			}
