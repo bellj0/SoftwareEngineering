@@ -59,7 +59,6 @@ public class Log {
 		String date = incident.getDate();
 		String type = incident.getType();
 		Location location = incident.getLocation();
-		String urgency = incident.getUrgency();
 		ArrayList<Vehicle> assignedVehicles = new ArrayList<Vehicle>();
 		assignedVehicles = incident.getVehicles();
 		
@@ -75,9 +74,14 @@ public class Log {
 	 */
 	public String getRespondingVehicles(ArrayList<Vehicle> assignedVehicles)
 	{
-		String respondingVehicles = "Test Vehicle";
+		String respondingVehicles = "";
 		
-		//TO-DO: Need to get vehicles to have a specified name to finish
+		// Loops through the passed assignedVehicles ArrayList to generate the string
+		for (Vehicle vehicle : assignedVehicles)
+		{
+			// Appends the vehicles's type and assigned number to the string
+			respondingVehicles += (vehicle.getVehicleType() + vehicle.getVehicleNumber());
+		}
 		
 		return respondingVehicles;
 	}
