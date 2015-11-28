@@ -8,7 +8,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-
+/**
+ * Will be able to test once Brian puts in the path of the directory where the logs will be stored
+ * @author Ryan Stump
+ *
+ */
 public class TestIncidentNumberingSystem
 {
 	private Incident incident;

@@ -39,18 +39,21 @@ public class TestAvailabilityManager
 	@Test
 	public void testCalculateAvailabilityTime() 
 	{
-		assertEquals(3000,manager.calculateAvailabilityTime(incident));
+		System.out.println(manager.calculateAvailabilityTime(incident));
+		assertEquals(30000,manager.calculateAvailabilityTime(incident));
 	}
 	
 	
 	@Test
-	public void testSetAvailabilityClock() throws InterruptedException{
+	public void testSetAvailabilityClockBefore(){
 		manager.setAvailabilityClock(3000,vehicle);
 		assertEquals(false,vehicle.isAvailable());
-		wait(4000);
+	}
+	
+	@Test
+	public void testSetAvailabilityClockAfter() throws InterruptedException{
+		manager.setAvailabilityClock(3000,vehicle);
+		Thread.sleep(4000);
 		assertEquals(true,vehicle.isAvailable());
 	}
-
-
-	
 }

@@ -144,7 +144,7 @@ public class Incident {
 		String result = "";
 		ArrayList<Vehicle> vehicles = getVehicles();
 		for(int i=0;i<vehicles.size();i++){
-			result += vehicles.get(i) + " ";
+			result += vehicles.get(i).getName() + " ";
 		}
 		return result;
 	}

@@ -112,7 +112,7 @@ public class TestIncident
 	@Test
 	public void testGetVehicles() 
 	{
-		assertEquals("Cruiser Fire Truck", incident.vehiclesToString());
+		assertEquals("Cruiser7 Fire Truck8 ", incident.vehiclesToString());
 	}
 	
 	@Test

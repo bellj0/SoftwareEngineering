@@ -11,15 +11,15 @@ import org.junit.rules.ExpectedException;
 
 public class TestTravelingCalculations
 {
-	private Vehicle vehicle;
 	private Location currentLocation = Location.LIBRARY;
 	private Location newLocation = Location.ROBINSON;
+	private Vehicle vehicle = new Vehicle("Cruiser",currentLocation);
 	private TravelingCalculations calculation = new TravelingCalculations(vehicle,newLocation);
 	
 	@Before
 	public void setUp() throws Exception 
 	{
-		vehicle = new Vehicle("Cruiser",currentLocation);
+		
 	}
 
 	@After

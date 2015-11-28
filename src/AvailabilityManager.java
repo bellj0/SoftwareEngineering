@@ -9,7 +9,7 @@
 public class AvailabilityManager {
 	private TravelingCalculations calculation;
 	private Incident incident;
-	private Vehicle vehicle;
+	private static Vehicle vehicle;
 	private Location location;
 	
 	public AvailabilityManager(Incident incident, Vehicle vehicle,Location location){
@@ -65,7 +65,6 @@ public class AvailabilityManager {
 		
 		vehicle.setAvailability(false);
 		new Threads(time).start();
-		vehicle.setAvailability(true);
 	}
 
 	static class Threads extends Thread{
@@ -77,10 +76,10 @@ public class AvailabilityManager {
 		
 		@Override
 		public void run(){
-			try{Thread.sleep(time);}
+			try{Thread.sleep(time);
+			vehicle.setAvailability(true);}
 			catch (Exception ignored) {}
 			
 		}
-		
 	}
 }
