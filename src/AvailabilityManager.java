@@ -8,9 +8,20 @@
  */
 public class AvailabilityManager {
 	private TravelingCalculations calculation;
+	private Incident incident;
+	private Vehicle vehicle;
+	private Location location;
 	
 	public AvailabilityManager(Incident incident, Vehicle vehicle,Location location){
-		
+		this.incident = incident;
+		this.vehicle = vehicle;
+		this.location = location;
+	}
+	
+	/**
+	 * Used for other classes to set a vehicle unavailable for the correct amount of time.
+	 */
+	public void manage(){
 		calculation = new TravelingCalculations(vehicle,location);
 		int time = calculateAvailabilityTime(incident) + calculation.convertDistanceToTime();
 		
@@ -34,9 +45,9 @@ public class AvailabilityManager {
 		String urgency = incident.getUrgency();
 		int threadTime = 0;
 		
-		if(urgency.equals("low"))
+		if(urgency.equals("Low"))
 			threadTime = 10000; // 10 seconds
-		else if(urgency.equals("medium"))
+		else if(urgency.equals("Medium"))
 			threadTime = 20000; //20 seconds
 		else
 			threadTime = 30000; //30 seconds
