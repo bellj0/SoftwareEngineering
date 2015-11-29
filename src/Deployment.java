@@ -21,7 +21,5 @@ public class Deployment {
 			AvailabilityManager availabilityManager = new AvailabilityManager(incident, vehicle, incident.getLocation());
 			availabilityManager.manage();
 		}
-		
-		// TO-DO: Update map with deployment information
 	}
 }

@@ -80,7 +80,7 @@ public class Log {
 		for (Vehicle vehicle : assignedVehicles)
 		{
 			// Appends the vehicles's type and assigned number to the string
-			respondingVehicles += (vehicle.getVehicleType() + vehicle.getVehicleNumber());
+			respondingVehicles += (vehicle.getVehicleType() + vehicle.getVehicleNumber() + " ");
 		}
 		
 		return respondingVehicles;
@@ -100,7 +100,8 @@ public class Log {
 			// Uses the logger's fileName variable to write to a specified log file.
 			// If the file doesn't exist it will create a new file
 			// If the file contains data the writer will append the new data
-			BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+			// The file will be stored in the Logs folder in the project and will be a .txt file
+			BufferedWriter writer = new BufferedWriter(new FileWriter("/Logs/" + fileName + ".txt", true));
 			
 			// Takes the formatted string that was generated from setLogEntry(incident) and prints it to the log
 			writer.write(getLogEntry());
