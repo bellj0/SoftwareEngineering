@@ -16,6 +16,7 @@ public class IncidentTypes {
 		incidents.add("Disturbing the Peace");
 		incidents.add("Drugs");
 		incidents.add("Dog Attack");
+		incidents.add("Party");
 		incidents.add("Low");
 		incidents.add("Domestic Abuse");
 		incidents.add("Traffic Accident");
