@@ -88,7 +88,7 @@ public enum IncidentType {
 	/**
 	 * Returns an ArrayList of all incident types.
 	 * 
-	 * @return ArrayLis of all urgency inicdent types
+	 * @return ArrayLis of all  urgency inicdent types
 	 */
 	public ArrayList<IncidentType> getAllIncident() 
 	{

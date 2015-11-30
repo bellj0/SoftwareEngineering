@@ -49,4 +49,24 @@ public enum Location
 		this.pos_y = pos_y;
 	}
 	
+	@Override
+	public String toString() 
+	{
+		String name = super.toString();
+		String newName = "";
+		
+		if(name.contains("_"))
+		{
+			for (char c : name.toCharArray())
+			{
+				if(c == '_')
+					newName += " ";
+				else
+					newName += c;
+			}
+			return newName;
+		}
+		return name;
+	}
+	
 }

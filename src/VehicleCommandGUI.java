@@ -39,12 +39,17 @@ public class VehicleCommandGUI extends JFrame {
 
 	private JPanel incidentSelection;
 	private JPanel locationSelection;
-	private JLabel lblIncidentSelection;
+	private JLabel lblIncidentUrgencySelection;
 	private JLabel lblLocationSelection;
 	private JList listOfLocations;
 	private JList listOfIncidentLevels;
 	private Component verticalStrut;
 	private JComboBox<IncidentType> incidentSelectionComboBox;
+	private Component verticalStrut_1;
+	private Component verticalStrut_2;
+	private JLabel lblNewLabel;
+	private Component verticalStrut_3;
+	private Component verticalStrut_4;
 	
 	
 	/**
@@ -177,6 +182,12 @@ public class VehicleCommandGUI extends JFrame {
 				
 				// Resets the selection of a location
 				listOfLocations.clearSelection();
+				listOfLocations.ensureIndexIsVisible(0);
+				
+				listOfIncidentLevels.clearSelection();
+				
+				incidentSelectionComboBox.removeAllItems();
+				incidentSelectionComboBox.setEnabled(false);
 				
 			}
 		});
@@ -195,11 +206,15 @@ public class VehicleCommandGUI extends JFrame {
 		incidentSelection = new JPanel();
 		incidentSelection.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		userInput.add(incidentSelection);
-		incidentSelection.setLayout(new BorderLayout(0, 10));
+		incidentSelection.setLayout(new BoxLayout(incidentSelection, BoxLayout.Y_AXIS));
 		
-		lblIncidentSelection = new JLabel("Incident Selection");
-		lblIncidentSelection.setHorizontalAlignment(SwingConstants.CENTER);
-		incidentSelection.add(lblIncidentSelection, BorderLayout.NORTH);
+		verticalStrut_4 = Box.createVerticalStrut(3);
+		incidentSelection.add(verticalStrut_4);
+		
+		lblIncidentUrgencySelection = new JLabel("Incident Urgency Level");
+		lblIncidentUrgencySelection.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblIncidentUrgencySelection.setHorizontalAlignment(SwingConstants.CENTER);
+		incidentSelection.add(lblIncidentUrgencySelection);
 		
 		
 		listOfIncidentLevels = new JList(UrgencyLevel.values());
@@ -244,14 +259,29 @@ public class VehicleCommandGUI extends JFrame {
 				
 			}
 		});
+		
+		verticalStrut_1 = Box.createVerticalStrut(8);
+		incidentSelection.add(verticalStrut_1);
 		listOfIncidentLevels.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listOfIncidentLevels.setVisibleRowCount(3);
 		JScrollPane urgencyScoll = new JScrollPane(listOfIncidentLevels);
 		incidentSelection.add(urgencyScoll);
 		
+		verticalStrut_2 = Box.createVerticalStrut(20);
+		verticalStrut_2.setForeground(Color.GRAY);
+		incidentSelection.add(verticalStrut_2);
+		
+		lblNewLabel = new JLabel("Incident Selection");
+		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		incidentSelection.add(lblNewLabel);
+		
+		verticalStrut_3 = Box.createVerticalStrut(8);
+		incidentSelection.add(verticalStrut_3);
+		
 		incidentSelectionComboBox = new JComboBox<IncidentType>();
 		incidentSelectionComboBox.setEnabled(false);
-		incidentSelection.add(incidentSelectionComboBox, BorderLayout.SOUTH);
+		incidentSelection.add(incidentSelectionComboBox);
 		
 		
 		
@@ -281,7 +311,7 @@ public class VehicleCommandGUI extends JFrame {
 			}
 		});
 		
-		listOfLocations.setVisibleRowCount(5);
+		listOfLocations.setVisibleRowCount(7);
 		listOfLocations.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		JScrollPane locationScroll = new JScrollPane(listOfLocations);
