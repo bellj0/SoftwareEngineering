@@ -9,6 +9,8 @@ import javax.swing.border.BevelBorder;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
@@ -40,7 +42,9 @@ public class VehicleCommandGUI extends JFrame {
 	private JLabel lblIncidentSelection;
 	private JLabel lblLocationSelection;
 	private JList listOfLocations;
+	private JList listOfIncidentLevels;
 	private Component verticalStrut;
+	private JComboBox<IncidentType> incidentSelectionComboBox;
 	
 	
 	/**
@@ -100,6 +104,7 @@ public class VehicleCommandGUI extends JFrame {
 		
 		JPanel recVehicleBoxes = new JPanel();
 		recVehicleBoxes.setLayout(new GridLayout(0, 2, 10, 0));
+		
 		vehicleType_1 = new JCheckBox("vehicleType_1");
 		vehicleType_2 = new JCheckBox("vehicleType_2");
 		vehicleType_3 = new JCheckBox("vehicleType_3");
@@ -190,10 +195,66 @@ public class VehicleCommandGUI extends JFrame {
 		incidentSelection = new JPanel();
 		incidentSelection.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		userInput.add(incidentSelection);
+		incidentSelection.setLayout(new BorderLayout(0, 10));
 		
 		lblIncidentSelection = new JLabel("Incident Selection");
 		lblIncidentSelection.setHorizontalAlignment(SwingConstants.CENTER);
-		incidentSelection.add(lblIncidentSelection);
+		incidentSelection.add(lblIncidentSelection, BorderLayout.NORTH);
+		
+		
+		listOfIncidentLevels = new JList(UrgencyLevel.values());
+		listOfIncidentLevels.addMouseListener(new MouseAdapter() 
+		{
+			@Override
+			public void mouseClicked(MouseEvent arg0) 
+			{
+				incidentSelectionComboBox.removeAllItems();
+				incidentSelectionComboBox.setEnabled(true);
+				
+				switch(listOfIncidentLevels.getSelectedValue().toString())
+				{
+				case "LOW":
+				{
+					for(IncidentType type : IncidentType.getLowIncidents())
+					{
+						incidentSelectionComboBox.addItem(type);
+					}
+					break;
+				}
+				case "MEDIUM":
+				{
+					for(IncidentType type : IncidentType.getMediumIncidents())
+					{
+						incidentSelectionComboBox.addItem(type);
+					}
+					break;
+				}
+				case "HIGH":
+				{
+					for(IncidentType type : IncidentType.getHighIncidents())
+					{
+						incidentSelectionComboBox.addItem(type);
+					}
+					break;
+				}
+				default:
+					incidentSelectionComboBox.setEnabled(false);
+					break;
+				}
+				
+			}
+		});
+		listOfIncidentLevels.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listOfIncidentLevels.setVisibleRowCount(3);
+		JScrollPane urgencyScoll = new JScrollPane(listOfIncidentLevels);
+		incidentSelection.add(urgencyScoll);
+		
+		incidentSelectionComboBox = new JComboBox<IncidentType>();
+		incidentSelectionComboBox.setEnabled(false);
+		incidentSelection.add(incidentSelectionComboBox, BorderLayout.SOUTH);
+		
+		
+		
 		
 		locationSelection = new JPanel();
 		locationSelection.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));

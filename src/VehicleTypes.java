@@ -20,13 +20,14 @@ public class VehicleTypes {
 		
 		else if(incidentName.equals("Bomb Threat")){
 			vehicleNames.add("Bomb Squad");
+			vehicleNames.add("Standard Cruiser");
 		}
 		else if(incidentName.equals("Hostage Situation")){
 		vehicleNames.add("Standard Cruiser");
 		vehicleNames.add("SUV");
 		}
 		else if (incidentName.equals("Suicide Attempt")){
-			vehicleNames.add("Standard cruiser");
+			vehicleNames.add("Standard Cruiser");
 			vehicleNames.add("Ambulance");
 			
 		}
