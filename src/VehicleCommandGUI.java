@@ -3,16 +3,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
 
 
 public class VehicleCommandGUI extends JFrame {
@@ -24,14 +16,8 @@ public class VehicleCommandGUI extends JFrame {
 	private ImageIcon incLocation;
 
 	private JPanel contentPane;
-	private JCheckBox vehicleType_1;
-	private JCheckBox vehicleType_2;
-	private JCheckBox vehicleType_3;
-	private JCheckBox vehicleType_4;
-	private JCheckBox vehicleType_5;
-	private JCheckBox vehicleType_6;
-	private JCheckBox vehicleType_7;
-	private JCheckBox vehicleType_8;
+	private JCheckBox vehicleType;
+	private JCheckBox resetType;
 
 	private JButton btnReportIncident;
 	private JButton btnReset;
@@ -47,7 +33,7 @@ public class VehicleCommandGUI extends JFrame {
 	private JComboBox<IncidentType> incidentSelectionComboBox;
 	private Component verticalStrut_1;
 	private Component verticalStrut_2;
-	private JLabel lblNewLabel;
+	private JLabel lblIncidentSelection;
 	private Component verticalStrut_3;
 	private Component verticalStrut_4;
 	
@@ -110,23 +96,11 @@ public class VehicleCommandGUI extends JFrame {
 		JPanel recVehicleBoxes = new JPanel();
 		recVehicleBoxes.setLayout(new GridLayout(0, 2, 10, 0));
 		
-		vehicleType_1 = new JCheckBox("vehicleType_1");
-		vehicleType_2 = new JCheckBox("vehicleType_2");
-		vehicleType_3 = new JCheckBox("vehicleType_3");
-		vehicleType_4 = new JCheckBox("vehicleType_4");
-		vehicleType_5 = new JCheckBox("vehicleType_5");
-		vehicleType_6 = new JCheckBox("vehicleType_6");
-		vehicleType_7 = new JCheckBox("vehicleType_7");
-		vehicleType_8 = new JCheckBox("vehicleType_8");
-		
-		recVehicleBoxes.add(vehicleType_1);
-		recVehicleBoxes.add(vehicleType_2);
-		recVehicleBoxes.add(vehicleType_3);
-		recVehicleBoxes.add(vehicleType_4);
-		recVehicleBoxes.add(vehicleType_5);
-		recVehicleBoxes.add(vehicleType_6);
-		recVehicleBoxes.add(vehicleType_7);
-		recVehicleBoxes.add(vehicleType_8);
+		for(VehicleType type : VehicleType.values())
+		{
+			vehicleType = new JCheckBox(type.toString());
+			recVehicleBoxes.add(vehicleType);
+		}
 		
 		
 		recVehicle.add(recVehiclesLabel, BorderLayout.NORTH);
@@ -170,15 +144,14 @@ public class VehicleCommandGUI extends JFrame {
 				
 				contentPane.add(mapLabel, BorderLayout.NORTH);
 				
-				// Reset/unselect all of the recommended vehicles
-				vehicleType_1.setSelected(false);
-				vehicleType_2.setSelected(false);
-				vehicleType_3.setSelected(false);
-				vehicleType_4.setSelected(false);
-				vehicleType_5.setSelected(false);
-				vehicleType_6.setSelected(false);
-				vehicleType_7.setSelected(false);
-				vehicleType_8.setSelected(false);
+				resetType = new JCheckBox();				
+				for(Component comp : recVehicleBoxes.getComponents())
+				{
+					
+						resetType = (JCheckBox)comp;
+						resetType.setSelected(false);
+					
+				}
 				
 				// Resets the selection of a location
 				listOfLocations.clearSelection();
@@ -268,13 +241,12 @@ public class VehicleCommandGUI extends JFrame {
 		incidentSelection.add(urgencyScoll);
 		
 		verticalStrut_2 = Box.createVerticalStrut(20);
-		verticalStrut_2.setForeground(Color.GRAY);
 		incidentSelection.add(verticalStrut_2);
 		
-		lblNewLabel = new JLabel("Incident Selection");
-		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		incidentSelection.add(lblNewLabel);
+		lblIncidentSelection = new JLabel("Incident Selection");
+		lblIncidentSelection.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblIncidentSelection.setHorizontalAlignment(SwingConstants.CENTER);
+		incidentSelection.add(lblIncidentSelection);
 		
 		verticalStrut_3 = Box.createVerticalStrut(8);
 		incidentSelection.add(verticalStrut_3);

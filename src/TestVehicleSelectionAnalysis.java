@@ -18,8 +18,8 @@ public class TestVehicleSelectionAnalysis
 	{
 		this.loc1 = Location.BOOKSTORE;
 		this.loc2 = Location.EDGEWOOD;
-		this.vehicle1 = new Vehicle("Cruiser", loc1);
-		this.vehicle2 = new Vehicle("K9", loc2);
+		this.vehicle1 = new Vehicle(VehicleType.STANDARD_CRUISER, loc1);
+		this.vehicle2 = new Vehicle(VehicleType.K9, loc2);
 	}
 
 	@After

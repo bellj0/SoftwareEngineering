@@ -42,12 +42,12 @@ public class AvailabilityManager {
 	 * incident if needed.
 	 */
 	public int calculateAvailabilityTime(Incident incident){
-		String urgency = incident.getUrgency();
+		UrgencyLevel urgency = incident.getUrgency();
 		int threadTime = 0;
 		
-		if(urgency.equals("Low"))
+		if(urgency.equals(UrgencyLevel.LOW))
 			threadTime = 10000; // 10 seconds
-		else if(urgency.equals("Medium"))
+		else if(urgency.equals(UrgencyLevel.MEDIUM))
 			threadTime = 20000; //20 seconds
 		else
 			threadTime = 30000; //30 seconds

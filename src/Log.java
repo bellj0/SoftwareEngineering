@@ -57,7 +57,7 @@ public class Log {
 		int incidentNum = incident.getNumber();
 		int time = incident.getTime();
 		String date = incident.getDate();
-		String type = incident.getType();
+		IncidentType type = incident.getType();
 		Location location = incident.getLocation();
 		ArrayList<Vehicle> assignedVehicles = new ArrayList<Vehicle>();
 		assignedVehicles = incident.getVehicles();
@@ -80,7 +80,7 @@ public class Log {
 		for (Vehicle vehicle : assignedVehicles)
 		{
 			// Appends the vehicles's type and assigned number to the string
-			respondingVehicles += (vehicle.getVehicleType() + vehicle.getVehicleNumber() + " ");
+			respondingVehicles += (vehicle.getVehicleType().toString() + vehicle.getVehicleNumber() + " ");
 		}
 		
 		return respondingVehicles;

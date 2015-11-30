@@ -21,9 +21,9 @@ public class TestAvailabilityManager
 	public void setUp() throws Exception 
 	{
 		assignedVehicles = new ArrayList<>();
-		vehicle = new Vehicle("Cruiser",location);
+		vehicle = new Vehicle(VehicleType.STANDARD_CRUISER,location);
 		assignedVehicles.add(vehicle);
-		incident = new Incident(1,900,"December 4th, 2015","Stabbing",location,assignedVehicles,"High");
+		incident = new Incident(1,900,"December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
 		manager = new AvailabilityManager(incident,vehicle,location);
 	}
 

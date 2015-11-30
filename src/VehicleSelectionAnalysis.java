@@ -5,14 +5,17 @@
  */
 public class VehicleSelectionAnalysis 
 {
-	Vehicle selectedVehicle;
+	private Vehicle selectedVehicle;
+	
+
+	
 
 /**
  * Constructor that chooses and sets the selected vehicle based on the type of vehicle needed and the incident's location.
  * @param type The type of vehicle that is needed.
  * @param location The location of the incident. 
  */
-	public VehicleSelectionAnalysis(String type, Location location)
+	public VehicleSelectionAnalysis(VehicleType type, Location location)
 	{
 		setSelectedVehicle(getClosestVehicle(type, location));
 	}
@@ -23,7 +26,7 @@ public class VehicleSelectionAnalysis
  * @param location The location of the incident.
  * @return Vehicle object representing the closest available vehicle to the specified location.
  */
-	public Vehicle getClosestVehicle(String type, Location location)
+	public Vehicle getClosestVehicle(VehicleType type, Location location)
 	{
 /*		Vehicle closest = new Vehicle(type, location);
 			for (Vehicle v: closest.getAvailableVehicles())
@@ -55,5 +58,10 @@ public class VehicleSelectionAnalysis
 	{
 		return selectedVehicle;
 	}
+	
+	
+	
+	
+	
 
 }

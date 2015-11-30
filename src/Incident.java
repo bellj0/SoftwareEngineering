@@ -10,14 +10,14 @@ public class Incident {
 	private int incidentNumber; // The number of the incident
 	private int time; // The time the incident occurred
 	private String date; // The date the incident occurred
-	private String type; // The type of incident
+	private IncidentType type; // The type of incident
 	private Location location; // The location of the incident
 	private ArrayList<Vehicle> assignedVehicles = new ArrayList<>(); // The vehicles assigned to be deployed to the incident
-	private String urgency; // The urgency of the incident
+	private UrgencyLevel urgency; // The urgency of the incident
 	
 	
-	public Incident(int incidentNumber, int time, String date, String type, Location location,
-			ArrayList<Vehicle> assignedVehicles, String urgency){
+	public Incident(int incidentNumber, int time, String date, IncidentType type, Location location,
+			ArrayList<Vehicle> assignedVehicles, UrgencyLevel urgency){
 		this.incidentNumber = incidentNumber;
 		this.time = time;
 		this.date = date;
@@ -80,7 +80,7 @@ public class Incident {
 	 * Returns the type of incident
 	 * @return The type of incident
 	 */
-	public String getType(){
+	public IncidentType getType(){
 		return type;
 	}
 	
@@ -88,8 +88,8 @@ public class Incident {
 	 * Sets the type of incident
 	 * @param newType The type of incident
 	 */
-	public void setType(String newType){
-		type = newType;
+	public void setType(IncidentType newType){
+		this.type = newType;
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class Incident {
 	 * Returns the urgency level of the incident
 	 * @return The urgency level of the incident
 	 */
-	public String getUrgency(){
+	public UrgencyLevel getUrgency(){
 		return urgency;
 	}
 	
@@ -136,8 +136,8 @@ public class Incident {
 	 * Sets the urgency level of the incident. Either low, medium, or high.
 	 * @param newUrgency The urgency level of the incident
 	 */
-	public void setUrgency(String newUrgency){
-		urgency = newUrgency;
+	public void setUrgency(UrgencyLevel newUrgency){
+		this.urgency = newUrgency;
 	}
 	
 	public String vehiclesToString(){
@@ -147,6 +147,59 @@ public class Incident {
 			result += vehicles.get(i).getName() + " ";
 		}
 		return result;
+	}
+
+	
+	public ArrayList<VehicleType> typeOfVehicleNeeded(IncidentType incidentName)
+	{
+		ArrayList<VehicleType> vehicleTypes = new ArrayList<>();
+		
+		if(incidentName.equals(IncidentType.THEFT)||incidentName.equals(IncidentType.VANDALISM)||incidentName.equals(IncidentType.DISTURBING_THE_PEACE)
+				|| incidentName.equals(IncidentType.DRUGS) || incidentName.equals(IncidentType.DOMESTIC_ABUSE) || incidentName.equals(IncidentType.STABBING)
+				|| incidentName.equals(IncidentType.DOG_ATTACK))
+		{
+			vehicleTypes.add(VehicleType.STANDARD_CRUISER);
+		}
+		else if(incidentName.equals(IncidentType.FIRE))
+		{
+			vehicleTypes.add(VehicleType.FIRE_TRUCK);
+			vehicleTypes.add(VehicleType.AMBULANCE);
+			vehicleTypes.add(VehicleType.STANDARD_CRUISER);
+		}
+		
+		else if(incidentName.equals(IncidentType.BOMB_THREAT))
+		{
+			vehicleTypes.add(VehicleType.BOMB_SQUAD);
+			vehicleTypes.add(VehicleType.STANDARD_CRUISER);
+		}
+		else if(incidentName.equals(IncidentType.HOSTAGE_SITUATION))
+		{
+		vehicleTypes.add(VehicleType.STANDARD_CRUISER);
+		vehicleTypes.add(VehicleType.SUV);
+		}
+		else if (incidentName.equals(IncidentType.SUICIDE_ATTEMPT))
+		{
+			vehicleTypes.add(VehicleType.STANDARD_CRUISER);
+			vehicleTypes.add(VehicleType.AMBULANCE);
+			
+		}
+		else if (incidentName.equals(IncidentType.SHOOTING))
+		{
+			vehicleTypes.add(VehicleType.STANDARD_CRUISER);
+			vehicleTypes.add(VehicleType.SWAT_TEAM);
+		}
+		else if (incidentName.equals(IncidentType.RIOT))
+		{
+			vehicleTypes.add(VehicleType.RIOT_TEAM);
+			vehicleTypes.add(VehicleType.STANDARD_CRUISER);
+			
+		}
+		else
+		{
+			
+		}
+		
+		return vehicleTypes;
 	}
 	
 }

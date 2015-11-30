@@ -5,7 +5,7 @@
 
 public class Vehicle 
 {
-	private String vehicleType;
+	private VehicleType vehicleType;
 	private Location location;
 	private boolean available;
 	private static int vehicleNumber = 1;
@@ -16,7 +16,7 @@ public class Vehicle
  * @param type The vehicle's type (cruiser, K9, etc).
  * @param location The current location of the vehicle.
  */
-	public Vehicle(String type, Location location)
+	public Vehicle(VehicleType type, Location location)
 	{
 		setVehicleType(type);
 		setLocation(location);	
@@ -27,7 +27,7 @@ public class Vehicle
  * Sets the vehicle's type. 
  * @param type The type of the current vehicle.
  */
-	public void setVehicleType(String type) throws IllegalArgumentException, NullPointerException
+	public void setVehicleType(VehicleType type) throws IllegalArgumentException, NullPointerException
 	{
 		if (type.equals(""))
 		{
@@ -48,7 +48,7 @@ public class Vehicle
  * Returns the vehicle's type.
  * @return String that holds the vehicle's type.
  */
-	public String getVehicleType()
+	public VehicleType getVehicleType()
 	{
 		return this.vehicleType;
 	}
@@ -94,7 +94,7 @@ public class Vehicle
  */
 	public void setName()
 	{
-		this.name = this.getVehicleType() + this.getVehicleNumber();
+		this.name = this.getVehicleType().toString() + this.getVehicleNumber();
 		vehicleNumber++;
 	}
 

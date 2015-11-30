@@ -23,11 +23,11 @@ public class TestIncident
 		//assigned vehicles
 		Location location = Location.LIBRARY;
 		assignedVehicles = new ArrayList<>();
-		vehicle1 = new Vehicle("Cruiser",location);
-		vehicle2 = new Vehicle("Fire Truck", location);
+		vehicle1 = new Vehicle(VehicleType.STANDARD_CRUISER,location);
+		vehicle2 = new Vehicle(VehicleType.FIRE_TRUCK, location);
 		assignedVehicles.add(vehicle1);
 		assignedVehicles.add(vehicle2);
-		incident = new Incident(1,900,"December 4th, 2015","Stabbing",location,assignedVehicles,"High");
+		incident = new Incident(1,900,"December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
 	}
 
 	@After
@@ -84,15 +84,15 @@ public class TestIncident
 	@Test
 	public void testGetType() 
 	{
-		assertEquals("Stabbing",incident.getType());
+		assertEquals(IncidentType.STABBING,incident.getType());
 	}
 
 	@Test
 	public void testSetType() 
 	{
-		incident.setType("Fire");
-		assertEquals("Fire", incident.getType());
-		incident.setType("Stabbing");
+		incident.setType(IncidentType.FIRE);
+		assertEquals(IncidentType.FIRE, incident.getType());
+		incident.setType(IncidentType.STABBING);
 	}
 
 	@Test
@@ -112,7 +112,7 @@ public class TestIncident
 	@Test
 	public void testGetVehicles() 
 	{
-		assertEquals("Cruiser7 Fire Truck8 ", incident.vehiclesToString());
+		assertEquals("STANDARD CRUISER7 FIRE TRUCK8 ", incident.vehiclesToString());
 	}
 	
 	@Test
@@ -128,15 +128,15 @@ public class TestIncident
 	public void testGetUrgency() 
 	{
 		
-		assertEquals("High", incident.getUrgency());
+		assertEquals(UrgencyLevel.HIGH, incident.getUrgency());
 	}
 	
 	@Test
 	public void testSetUrgency() 
 	{
-		incident.setUrgency("Medium");
-		assertEquals("Medium", incident.getUrgency());
-		incident.setUrgency("High");
+		incident.setUrgency(UrgencyLevel.MEDIUM);
+		assertEquals(UrgencyLevel.MEDIUM, incident.getUrgency());
+		incident.setUrgency(UrgencyLevel.HIGH);
 	}
 
 }

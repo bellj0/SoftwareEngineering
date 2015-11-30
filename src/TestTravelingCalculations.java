@@ -13,7 +13,7 @@ public class TestTravelingCalculations
 {
 	private Location currentLocation = Location.LIBRARY;
 	private Location newLocation = Location.ROBINSON;
-	private Vehicle vehicle = new Vehicle("Cruiser",currentLocation);
+	private Vehicle vehicle = new Vehicle(VehicleType.STANDARD_CRUISER,currentLocation);
 	private TravelingCalculations calculation = new TravelingCalculations(vehicle,newLocation);
 	
 	@Before

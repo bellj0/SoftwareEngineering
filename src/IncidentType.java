@@ -11,7 +11,8 @@ public enum IncidentType {
 	THEFT(UrgencyLevel.LOW), 
 	VANDALISM(UrgencyLevel.LOW), 
 	DISTURBING_THE_PEACE(UrgencyLevel.LOW), 
-	DOG_ATTACK(UrgencyLevel.LOW), 
+	DOG_ATTACK(UrgencyLevel.LOW),
+	DRUGS(UrgencyLevel.LOW),
 	PARTY(UrgencyLevel.LOW),
 
 	DOMESTIC_ABUSE(UrgencyLevel.MEDIUM), 
@@ -88,7 +89,7 @@ public enum IncidentType {
 	/**
 	 * Returns an ArrayList of all incident types.
 	 * 
-	 * @return ArrayLis of all  urgency inicdent types
+	 * @return ArrayList of all  urgency incident types
 	 */
 	public ArrayList<IncidentType> getAllIncident() 
 	{

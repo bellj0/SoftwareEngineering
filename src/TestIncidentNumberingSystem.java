@@ -24,9 +24,9 @@ public class TestIncidentNumberingSystem
 	public void setUp() throws Exception 
 	{
 		assignedVehicles = new ArrayList<>();
-		vehicle = new Vehicle("Cruiser",location);
+		vehicle = new Vehicle(VehicleType.STANDARD_CRUISER,location);
 		assignedVehicles.add(vehicle);
-		incident = new Incident(1,900,"December 4th, 2015","Stabbing",location,assignedVehicles,"High");
+		incident = new Incident(1,900,"December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
 	}
 
 	@After
@@ -45,7 +45,7 @@ public class TestIncidentNumberingSystem
 		system.setNumber();
 		IncidentNumberingSystem system2 = new IncidentNumberingSystem(incident);
 		int previousNumber = incident.getNumber();
-		Incident incident2 = new Incident(1,900,"December 4th, 2015","Stabbing",location,assignedVehicles,"High");
+		Incident incident2 = new Incident(1,900,"December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
 		system2.setNumber();
 		assertEquals(previousNumber+1,incident2.getNumber());
 	}

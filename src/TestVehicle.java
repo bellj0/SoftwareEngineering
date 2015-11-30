@@ -19,8 +19,8 @@ public class TestVehicle
 	{
 		this.loc1 = Location.BOOKSTORE;
 		this.loc2 = Location.EDGEWOOD;
-		this.vehicle1 = new Vehicle("Cruiser", loc1);
-		this.vehicle2 = new Vehicle("K9", loc2);
+		this.vehicle1 = new Vehicle(VehicleType.STANDARD_CRUISER, loc1);
+		this.vehicle2 = new Vehicle(VehicleType.K9, loc2);
 	}
 
 	@After
@@ -39,15 +39,15 @@ public class TestVehicle
 	public void testVehicle() 
 	{
 		Location loc3 = Location.CHESTNUT;
-		Vehicle vehicle3 = new Vehicle("Cruiser", loc3);
-		assertEquals("Cruiser", vehicle3.getVehicleType());
+		Vehicle vehicle3 = new Vehicle(VehicleType.STANDARD_CRUISER, loc3);
+		assertEquals(VehicleType.STANDARD_CRUISER, vehicle3.getVehicleType());
 	}
 
 	@Test
 	public void testSetVehicleType() 
 	{
-		vehicle1.setVehicleType("SUV");
-		assertEquals("SUV", vehicle1.getVehicleType());
+		vehicle1.setVehicleType(VehicleType.SUV);
+		assertEquals(VehicleType.SUV, vehicle1.getVehicleType());
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ public class TestVehicle
 	{
 		exception.expect(IllegalArgumentException.class);
 		exception.expectMessage("Vehicle type cannot be an empty string.");
-		vehicle1.setVehicleType("");		
+		vehicle1.setVehicleType(null);		
 	}
 	
 	@Test
@@ -68,7 +68,7 @@ public class TestVehicle
 	@Test
 	public void testGetVehicleType() 
 	{
-		assertEquals("K9", vehicle2.getVehicleType());
+		assertEquals(VehicleType.K9, vehicle2.getVehicleType());
 	}
 
 	@Test
