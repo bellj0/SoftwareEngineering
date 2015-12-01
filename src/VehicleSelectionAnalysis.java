@@ -6,6 +6,7 @@
 public class VehicleSelectionAnalysis 
 {
 	private Vehicle selectedVehicle;
+	private VehicleData vehicleData = new VehicleData();
 	
 
 	
@@ -15,31 +16,43 @@ public class VehicleSelectionAnalysis
  * @param type The type of vehicle that is needed.
  * @param location The location of the incident. 
  */
-	public VehicleSelectionAnalysis(VehicleType type, Location location)
+	public VehicleSelectionAnalysis(VehicleType type, VehicleData vehicleData, Location location)
 	{
-		setSelectedVehicle(getClosestVehicle(type, location));
+		setSelectedVehicle(getClosestVehicle(type, vehicleData, location));
 	}
 
-/**
- * 
- * @param type The type of vehicle that is needed. 
- * @param location The location of the incident.
- * @return Vehicle object representing the closest available vehicle to the specified location.
- */
-	public Vehicle getClosestVehicle(VehicleType type, Location location)
-	{
-/*		Vehicle closest = new Vehicle(type, location);
-			for (Vehicle v: closest.getAvailableVehicles())
-			{
-					  
-			}
-				
-		return closest;*/ 
-		
-		
-		//adding this to fix compiler errors
-		return null;
-	}
+	/**
+	 * 
+	 * @param vehicleData object where the list of available vehicles will be retrieved from. 
+	 * @param location The location of the incident.
+	 * @return Vehicle object representing the closest available vehicle to the specified location.
+	 */
+		public Vehicle getClosestVehicle(VehicleType type, VehicleData vehicleData, Location location)
+		{
+			Vehicle closest = null;
+			int currentDistance;
+			int smallestDistance = 0;
+
+				for (Vehicle v: vehicleData.returnAvailable())
+				{
+					TravelingCalculations travelCalc = new TravelingCalculations(v, location);
+					currentDistance = travelCalc.calculateDistance();
+					
+					if (smallestDistance == 0)
+					{
+						smallestDistance = currentDistance;
+					}
+					else if (currentDistance < smallestDistance)
+					{
+						smallestDistance = currentDistance;
+						closest = v;
+					}
+					
+				}
+					
+			return closest;
+			
+		}
 	
 /**
  * Sets the selected vehicle	

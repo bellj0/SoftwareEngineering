@@ -11,7 +11,8 @@ public class TestVehicleSelectionAnalysis
 	private Location loc2;
 	private Vehicle vehicle1;
 	private Vehicle vehicle2;
-	private VehicleSelectionAnalysis vehicleSelect = new VehicleSelectionAnalysis(vehicle1.getVehicleType(), loc1);
+	private VehicleData vehicleData = new VehicleData();
+	private VehicleSelectionAnalysis vehicleSelect = new VehicleSelectionAnalysis(vehicle1.getVehicleType(), vehicleData, loc1);
 	
 	@Before
 	public void setUp() throws Exception 
