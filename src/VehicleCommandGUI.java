@@ -114,7 +114,7 @@ public class VehicleCommandGUI extends JFrame {
 		buttonsPanel.setLayout(fl_buttonsPanel);
 
 		
-		btnReportIncident = new JButton("Report Inicident");
+		btnReportIncident = new JButton("Report Incident");
 		btnReportIncident.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
