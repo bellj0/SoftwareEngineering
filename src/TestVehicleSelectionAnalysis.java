@@ -9,6 +9,7 @@ public class TestVehicleSelectionAnalysis
 {
 	private Location loc1;
 	private Location loc2;
+	private Location loc3;
 	private Vehicle vehicle1;
 	private Vehicle vehicle2;
 	private VehicleData vehicleData = new VehicleData();
@@ -19,6 +20,7 @@ public class TestVehicleSelectionAnalysis
 	{
 		this.loc1 = Location.BOOKSTORE;
 		this.loc2 = Location.EDGEWOOD;
+		this.loc3 = Location.ROWAN;
 		this.vehicle1 = new Vehicle(VehicleType.STANDARD_CRUISER, loc1);
 		this.vehicle2 = new Vehicle(VehicleType.K9, loc2);
 	}
@@ -45,16 +47,11 @@ public class TestVehicleSelectionAnalysis
 	}
 
 	@Test
-	public void testSetSelectedVehicle() 
+	public void testSetandGetSelectedVehicle() 
 	{
 		vehicleSelect.setSelectedVehicle(vehicle1);
 		assertEquals(vehicle1, vehicleSelect.getSelectedVehicle());
 	}
 
-	@Test
-	public void testGetSelectedVehicle() 
-	{
-		fail("Not yet implemented");
-	}
 
 }
