@@ -3,8 +3,10 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 
 public class VehicleCommandGUI extends JFrame {
@@ -18,6 +20,7 @@ public class VehicleCommandGUI extends JFrame {
 	private JPanel contentPane;
 	private JCheckBox vehicleType;
 	private JCheckBox resetType;
+	private JCheckBox reccType;
 
 	private JButton btnReportIncident;
 	private JButton btnReset;
@@ -36,6 +39,8 @@ public class VehicleCommandGUI extends JFrame {
 	private JLabel lblIncidentSelection;
 	private Component verticalStrut_3;
 	private Component verticalStrut_4;
+	
+	private ArrayList<VehicleType> recommendedVehicleTypes;
 	
 	
 	/**
@@ -59,6 +64,8 @@ public class VehicleCommandGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public VehicleCommandGUI() {
+		
+		
 		setTitle("Vehicle Command and Control System");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,9 +122,29 @@ public class VehicleCommandGUI extends JFrame {
 
 		
 		btnReportIncident = new JButton("Report Incident");
-		btnReportIncident.addMouseListener(new MouseAdapter() {
+		btnReportIncident.addMouseListener(new MouseAdapter() 
+		{
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) 
+			{
+				recommendedVehicleTypes = new ArrayList<>();
+				reccType = new JCheckBox();				
+				
+				for(Component comp : recVehicleBoxes.getComponents())
+				{
+					reccType = (JCheckBox)comp;
+					if(reccType.isSelected())
+					{
+						for(VehicleType compareType : VehicleType.values())
+						{
+							if(compareType.toString().equals(reccType.getName()))
+							{
+								recommendedVehicleTypes.add(compareType);
+							}
+						}							
+					}					
+				}
+				
 				
 				
 			}
@@ -125,9 +152,12 @@ public class VehicleCommandGUI extends JFrame {
 		
 		
 		btnPrintLog = new JButton("Print Log");
-		btnPrintLog.addMouseListener(new MouseAdapter() {
+		btnPrintLog.addMouseListener(new MouseAdapter() 
+		{
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) 
+			{
+				
 			}
 		});	
 		
