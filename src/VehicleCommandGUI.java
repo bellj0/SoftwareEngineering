@@ -42,23 +42,6 @@ public class VehicleCommandGUI extends JFrame {
 	
 	private ArrayList<VehicleType> recommendedVehicleTypes;
 	
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VehicleCommandGUI frame = new VehicleCommandGUI();
-					frame.setVisible(true);
-					frame.pack();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
