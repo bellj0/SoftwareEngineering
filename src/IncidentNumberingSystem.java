@@ -25,7 +25,7 @@ public class IncidentNumberingSystem {
 	 */
 	private void incrementAndAssign(Incident incident){
 		int number = 0;
-		String path = "";
+		String path = "/Logs/";
 		File[] files = finder(path);
 		number = files.length;
 		
