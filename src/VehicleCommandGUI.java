@@ -179,20 +179,24 @@ public class VehicleCommandGUI extends JFrame {
 						incVehicles.add(vehicleChooser.getSelectedVehicle());
 					}
 					
-					 DateFormat dateFormat = new SimpleDateFormat("MMMM dd yyyy");
-				     Date date = new Date();
-				     DateFormat timeFormat = new SimpleDateFormat("h:ma");
-				     Date time = new Date();
-				        
-				    
-					/*
-					Incident incident = new Incident(time, date,
-					 incidentSelectionComboBox.getSelectedItem(),
-					 Location location,
-					 incVehicles,
-					 Urgency urgency);
-					 */
-
+					//Gets the current time and date in the correct format
+					//then converts both to a string
+				    DateFormat dateFormat = new SimpleDateFormat("MMMM dd yyyy");
+			        Date date = new Date();
+			        String dateString = dateFormat.format(date).toString();
+			        
+			        DateFormat timeFormat = new SimpleDateFormat("h:ma");
+			        Date time = new Date();
+			        String timeString = dateFormat.format(time).toString();
+			        
+			    
+				/*
+				Incident incident = new Incident(timeString, dateString,
+				 incidentSelectionComboBox.getSelectedItem(),
+				 listOfLocations.getSelectedValue().toString(),
+				 incVehicles,
+				 listOfIncidentLevels.getSelectedValue().toString());
+				 */
 				}
 			}
 		});
