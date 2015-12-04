@@ -11,7 +11,10 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import java.util.Vector;
 
@@ -176,11 +179,19 @@ public class VehicleCommandGUI extends JFrame {
 						incVehicles.add(vehicleChooser.getSelectedVehicle());
 					}
 					
-					// Incident(int time, String date,
-					// incidentSelectionComboBox.getSelectedItem(), Location
-					// location,
-					// ArrayList<Vehicle> assignedVehicles, UrgencyLevel
-					// urgency)
+					 DateFormat dateFormat = new SimpleDateFormat("MMMM dd yyyy");
+				     Date date = new Date();
+				     DateFormat timeFormat = new SimpleDateFormat("h:ma");
+				     Date time = new Date();
+				        
+				    
+					/*
+					Incident incident = new Incident(time, date,
+					 incidentSelectionComboBox.getSelectedItem(),
+					 Location location,
+					 incVehicles,
+					 Urgency urgency);
+					 */
 
 				}
 			}
