@@ -199,6 +199,25 @@ public class VehicleCommandGUI extends JFrame {
 					{
 						e1.printStackTrace();
 					}
+					
+					//resets the GUI buttons
+					resetType = new JCheckBox();
+					for (Component comp : recVehicleBoxes.getComponents()) {
+						resetType = (JCheckBox) comp;
+						resetType.setSelected(false);
+					}
+
+					// Resets the selection of a location
+					listOfLocations.clearSelection();
+					listOfLocations.ensureIndexIsVisible(0);
+
+					listOfIncidentLevels.clearSelection();
+
+					incidentSelectionComboBox.removeAllItems();
+					incidentSelectionComboBox.setEnabled(false);
+
+					recommendedVehicleTypes.clear();
+					repaint();
 				}
 			}
 		});
@@ -206,7 +225,7 @@ public class VehicleCommandGUI extends JFrame {
 		/**
 		 * Opens the folder where the logs are located on mouse click
 		 */
-		btnPrintLog = new JButton("Print Log");
+		btnPrintLog = new JButton("Open Logs");
 		btnPrintLog.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
