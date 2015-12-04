@@ -176,7 +176,7 @@ public class VehicleCommandGUI extends JFrame {
 						incVehicles.add(vehicleChooser.getSelectedVehicle());
 					}
 					
-					// Incident(0, int time, String date,
+					// Incident(int time, String date,
 					// incidentSelectionComboBox.getSelectedItem(), Location
 					// location,
 					// ArrayList<Vehicle> assignedVehicles, UrgencyLevel
