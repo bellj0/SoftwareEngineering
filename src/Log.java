@@ -62,7 +62,7 @@ public class Log {
 		ArrayList<Vehicle> assignedVehicles = new ArrayList<Vehicle>();
 		assignedVehicles = incident.getVehicles();
 		
-		// Log Entry example: Incident: 01 | Date: November 19 2015 | Time: 800 | Type: Stabbing | Location: James Hall | Responding Vehicle(s) SC01, SC02
+		// Log Entry example: Incident: 01 | Date: November 19 2015 | Time: 3:20PM | Type: Stabbing | Location: James Hall | Responding Vehicle(s) SC01, SC02
 		this.logEntry = "Incident " + incidentNum + " | " + "Date: " + date + " | " + "Time: " + time + " | " + "Type: " + type + " | "
 				+ "Location: " + location + "Responding Vehicle(s) " + getRespondingVehicles(assignedVehicles);
 	}
