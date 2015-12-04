@@ -59,27 +59,6 @@ public class TestIncident
 		assertEquals(900,incident.getTime());
 	}
 	
-	@Test
-	public void testSetTime() 
-	{
-		incident.setTime("3:30PM");
-		assertEquals(1000,incident.getTime());
-		incident.setTime("3:20PM");
-	}
-
-	@Test
-	public void testGetDate() 
-	{
-		assertEquals("December 4th, 2015", incident.getDate());
-	}
-
-	@Test
-	public void testSetDate() 
-	{
-		incident.setDate("December 5th, 2015");
-		assertEquals("December 5th, 2015",incident.getDate());
-		incident.setDate("December 4th, 2015");
-	}
 
 	@Test
 	public void testGetType() 

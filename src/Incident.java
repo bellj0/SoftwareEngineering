@@ -1,4 +1,7 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * The purpose of this class is to store all of the data of an incident.
@@ -26,6 +29,8 @@ public class Incident {
 		this.assignedVehicles = assignedVehicles;
 		this.urgency = urgency;
 		
+		setDate();
+		setTime();
 		setNumber(numbering.incrementNumber());
 	}
 	/**
@@ -57,8 +62,10 @@ public class Incident {
 	 * Sets the time that the incident was submitted by the user
 	 * @param newTime The time submitted by the user.
 	 */
-	public void setTime(String newTime){
-		time = newTime;
+	private void setTime(){
+		DateFormat timeFormat = new SimpleDateFormat("h:ma");
+        Date timeT = new Date();
+        time = timeFormat.format(timeT).toString();
 	}
 
 	/**
@@ -73,8 +80,12 @@ public class Incident {
 	 * Sets the date that the incident was submitted by the user
 	 * @param newDate The date the incident was submitted
 	 */
-	public void setDate(String newDate){
-		date = newDate;
+	private void setDate(){
+		//Gets the current time and date in the correct format
+		//then converts both to a string
+	    DateFormat dateFormat = new SimpleDateFormat("MMMM dd yyyy");
+        Date dateD = new Date();
+        date = dateFormat.format(dateD).toString();
 	}
 	
 	/**

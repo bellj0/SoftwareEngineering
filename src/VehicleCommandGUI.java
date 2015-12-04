@@ -178,17 +178,6 @@ public class VehicleCommandGUI extends JFrame {
 						VehicleSelectionAnalysis vehicleChooser = new VehicleSelectionAnalysis(car, vehicleInfo.getInstance(), (Location)listOfLocations.getSelectedValue());
 						incVehicles.add(vehicleChooser.getSelectedVehicle());
 					}
-					
-					//Gets the current time and date in the correct format
-					//then converts both to a string
-				    DateFormat dateFormat = new SimpleDateFormat("MMMM dd yyyy");
-			        Date date = new Date();
-			        String dateString = dateFormat.format(date).toString();
-			        
-			        DateFormat timeFormat = new SimpleDateFormat("h:ma");
-			        Date time = new Date();
-			        String timeString = dateFormat.format(time).toString();
-			        
 			    
 				/*
 				Incident incident = new Incident(timeString, dateString,
