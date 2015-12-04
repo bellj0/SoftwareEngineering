@@ -101,7 +101,7 @@ public class Log {
 			// If the file doesn't exist it will create a new file
 			// If the file contains data the writer will append the new data
 			// The file will be stored in the Logs folder in the project and will be a .txt file
-			BufferedWriter writer = new BufferedWriter(new FileWriter("src//Logs" + fileName + ".txt", true));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("src//Logs/" + fileName + ".txt", true));
 			
 			// Takes the formatted string that was generated from setLogEntry(incident) and prints it to the log
 			writer.write(getLogEntry());

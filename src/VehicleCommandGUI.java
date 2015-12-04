@@ -192,7 +192,13 @@ public class VehicleCommandGUI extends JFrame {
 
 					//Creates the log
 					Log log = new Log("Log " + incident.getNumber());
-					log.setLogEntry(incident);
+					try{
+					log.generateLogEntry(incident);
+					}
+					catch (IOException e1) 
+					{
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
