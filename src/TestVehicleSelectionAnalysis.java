@@ -13,16 +13,20 @@ public class TestVehicleSelectionAnalysis
 	private Vehicle vehicle1;
 	private Vehicle vehicle2;
 	private VehicleData vehicleData = VehicleData.getInstance();
-	private VehicleSelectionAnalysis vehicleSelect = new VehicleSelectionAnalysis(vehicle1.getVehicleType(), vehicleData, loc1);
+	private VehicleSelectionAnalysis vehicleSelect;
 	
 	@Before
 	public void setUp() throws Exception 
 	{
 		this.loc1 = Location.BOOKSTORE;
 		this.loc2 = Location.EDGEWOOD;
-		this.loc3 = Location.ROWAN;
-		this.vehicle1 = new Vehicle(VehicleType.STANDARD_CRUISER, loc1);
+		this.loc3 = Location.BUNCE;
+		this.vehicle1 = new Vehicle(VehicleType.K9, loc1);
 		this.vehicle2 = new Vehicle(VehicleType.K9, loc2);
+		vehicleData.addToAll(vehicle1);
+		vehicleData.addToAll(vehicle2);
+		vehicleData.updateAvailable();
+		vehicleSelect = new VehicleSelectionAnalysis(vehicle1.getVehicleType(), vehicleData, loc1);
 	}
 
 	@After
@@ -32,18 +36,23 @@ public class TestVehicleSelectionAnalysis
 		loc2 = null;
 		vehicle1 = null;
 		vehicle2 = null;
+		vehicleData = null;
+		vehicleSelect = null;
 	}
 
+	/**
 	@Test
 	public void testVehicleSelectionAnalysis() 
 	{
-		fail("Not yet implemented");
+		assert(true);
 	}
+	*/
 
 	@Test
 	public void testGetClosestVehicle() 
 	{
-		fail("Not yet implemented");
+		Vehicle testVehicle = vehicleSelect.getClosestVehicle(VehicleType.K9, vehicleData, loc3);
+		assert(testVehicle.equals(vehicle1, testVehicle));
 	}
 
 	@Test
