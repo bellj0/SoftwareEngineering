@@ -179,13 +179,12 @@ public class VehicleCommandGUI extends JFrame {
 						incVehicles.add(vehicleChooser.getSelectedVehicle());
 					}
 			    
-				/*
-				Incident incident = new Incident(timeString, dateString,
-				 incidentSelectionComboBox.getSelectedItem(),
-				 listOfLocations.getSelectedValue().toString(),
+				
+				Incident incident = new Incident(
+				 (IncidentType)incidentSelectionComboBox.getSelectedItem(),
+				 (Location)listOfLocations.getSelectedValue(),
 				 incVehicles,
-				 listOfIncidentLevels.getSelectedValue().toString());
-				 */
+				 (UrgencyLevel)listOfIncidentLevels.getSelectedValue());
 				}
 			}
 		});
