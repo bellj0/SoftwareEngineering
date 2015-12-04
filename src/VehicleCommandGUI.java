@@ -197,36 +197,16 @@ public class VehicleCommandGUI extends JFrame {
 			}
 		});
 
+		/**
+		 * Opens the folder where the logs are located on mouse click
+		 */
 		btnPrintLog = new JButton("Print Log");
 		btnPrintLog.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//Below is how to open one of the text files.  Don't think a button will do the trick
-				//
-				/*
-				BufferedReader br = null;
-
-		        try {
-
-		            String sCurrentLine;
-
-		            br = new BufferedReader(new FileReader("\\"+log.getFileName()+".txt"));
-
-		            while ((sCurrentLine = br.readLine()) != null) {
-		                System.out.println(sCurrentLine);
-		            }
-
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        } finally {
-		            try {
-		                if (br != null)br.close();
-		            } catch (IOException ex) {
-		                ex.printStackTrace();
-
-		            }
-		        }
-				 */
+				 try{
+				        Desktop.getDesktop().open(new File("src\\Logs"));
+				    }catch(IOException e1){}
 			}
 
 
