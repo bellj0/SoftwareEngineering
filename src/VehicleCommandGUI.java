@@ -202,7 +202,7 @@ public class VehicleCommandGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Below is how to open one of the text files.  Don't think a button will do the trick
-				
+				//
 				/*
 				BufferedReader br = null;
 
