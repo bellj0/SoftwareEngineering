@@ -6,7 +6,7 @@
 public class VehicleSelectionAnalysis 
 {
 	private Vehicle selectedVehicle;
-	private VehicleData vehicleData = new VehicleData();
+	private VehicleData vehicleData = VehicleData.getInstance();
 	
 
 	
@@ -32,23 +32,27 @@ public class VehicleSelectionAnalysis
 			Vehicle closest = null;
 			int currentDistance;
 			int smallestDistance = 0;
+			
+		for (Vehicle v : vehicleData.returnAvailable()) 
+		{
+			if (v.getVehicleType().equals(type)) 
+			{
+				TravelingCalculations travelCalc = new TravelingCalculations(v,
+						location);
+				currentDistance = travelCalc.calculateDistance();
 
-				for (Vehicle v: vehicleData.returnAvailable())
+				if (smallestDistance == 0) 
 				{
-					TravelingCalculations travelCalc = new TravelingCalculations(v, location);
-					currentDistance = travelCalc.calculateDistance();
-					
-					if (smallestDistance == 0)
-					{
-						smallestDistance = currentDistance;
-					}
-					else if (currentDistance < smallestDistance)
-					{
-						smallestDistance = currentDistance;
-						closest = v;
-					}
-					
+					smallestDistance = currentDistance;
+					closest = v;
+				} 
+				else if (currentDistance < smallestDistance) 
+				{
+					smallestDistance = currentDistance;
+					closest = v;
 				}
+			}
+		}
 					
 			return closest;
 			

@@ -150,12 +150,12 @@ public class Incident {
 	}
 
 	
-	public ArrayList<VehicleType> typeOfVehicleNeeded(IncidentType incidentName)
+	public static ArrayList<VehicleType> typeOfVehicleNeeded(IncidentType incidentName)
 	{
 		ArrayList<VehicleType> vehicleTypes = new ArrayList<>();
 		
 		if(incidentName.equals(IncidentType.THEFT)||incidentName.equals(IncidentType.VANDALISM)||incidentName.equals(IncidentType.DISTURBING_THE_PEACE)
-				|| incidentName.equals(IncidentType.DRUGS) || incidentName.equals(IncidentType.DOMESTIC_ABUSE) || incidentName.equals(IncidentType.STABBING)
+				|| incidentName.equals(IncidentType.DOMESTIC_ABUSE) || incidentName.equals(IncidentType.STABBING)
 				|| incidentName.equals(IncidentType.DOG_ATTACK))
 		{
 			vehicleTypes.add(VehicleType.STANDARD_CRUISER);
@@ -196,7 +196,8 @@ public class Incident {
 		}
 		else
 		{
-			
+			vehicleTypes.add(VehicleType.STANDARD_CRUISER);
+			vehicleTypes.add(VehicleType.K9);
 		}
 		
 		return vehicleTypes;

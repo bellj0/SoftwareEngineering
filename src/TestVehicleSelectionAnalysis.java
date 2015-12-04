@@ -12,7 +12,7 @@ public class TestVehicleSelectionAnalysis
 	private Location loc3;
 	private Vehicle vehicle1;
 	private Vehicle vehicle2;
-	private VehicleData vehicleData = new VehicleData();
+	private VehicleData vehicleData = VehicleData.getInstance();
 	private VehicleSelectionAnalysis vehicleSelect = new VehicleSelectionAnalysis(vehicle1.getVehicleType(), vehicleData, loc1);
 	
 	@Before

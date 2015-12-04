@@ -128,4 +128,9 @@ public class Vehicle
 		else
 			return false;
 	}
+
+@Override
+public String toString() {
+	return  name;
+}
 }

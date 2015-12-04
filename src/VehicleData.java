@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * This module creates 2 ArrayLists, one for currently available vehicles, and one for all vehicles in the force. 
@@ -7,11 +8,70 @@ import java.util.ArrayList;
 public class VehicleData 
 {
 	
-	private ArrayList<Vehicle> availableVehicles = new ArrayList<Vehicle>();
-	private ArrayList<Vehicle> allVehicles = new ArrayList<Vehicle>();
+	private static ArrayList<Vehicle> availableVehicles = new ArrayList<Vehicle>();
+	private static ArrayList<Vehicle> allVehicles = new ArrayList<Vehicle>();
+	private static VehicleData vehicleData = new VehicleData();
 	
-	public VehicleData() 
+	private VehicleData() 
 	{
+		Random rn = new Random();
+		int num;
+		
+		for(VehicleType type : VehicleType.values())
+		{
+			
+			if(type.equals(VehicleType.STANDARD_CRUISER))
+			{
+				num = rn.nextInt(7) + 3;
+				for(int i = 0;i < num; i++)
+				{
+					addToAll(new Vehicle(type,Location.values()[rn.nextInt(Location.values().length)]));
+				}
+				
+			}
+			else if(type.equals(VehicleType.SUV))
+			{
+				num = rn.nextInt(3) + 2;
+				for(int i = 0;i < num; i++)
+				{
+					addToAll(new Vehicle(type,Location.values()[rn.nextInt(Location.values().length)]));
+				}
+			}
+			else if(type.equals(VehicleType.AMBULANCE))
+			{
+				num = rn.nextInt(2) + 1;
+				for(int i = 0;i < num; i++)
+				{
+					addToAll(new Vehicle(type,Location.values()[rn.nextInt(Location.values().length)]));
+				}
+			}
+			else if(type.equals(VehicleType.FIRE_TRUCK))
+			{
+				num = rn.nextInt(1) + 1;
+				for(int i = 0;i < num; i++)
+				{
+					addToAll(new Vehicle(type,Location.values()[rn.nextInt(Location.values().length)]));
+				}
+			}
+			else if(type.equals(VehicleType.K9))
+			{
+				num = rn.nextInt(3) + 1;
+				for(int i = 0;i < num; i++)
+				{
+					addToAll(new Vehicle(type,Location.values()[rn.nextInt(Location.values().length)]));
+				}
+			}
+			else
+			{
+				addToAll(new Vehicle(type,Location.values()[rn.nextInt(Location.values().length)]));
+			}
+			
+		}
+		for(Vehicle car : allVehicles)
+		{
+			car.setAvailability(true);
+		}
+			updateAvailable();
 	}
 	
 	/**
@@ -64,6 +124,11 @@ public class VehicleData
 	public ArrayList<Vehicle> returnAll()
 	{
 		return allVehicles;
+	}
+	
+	public static VehicleData getInstance()
+	{
+		return vehicleData;
 	}
 
 }
