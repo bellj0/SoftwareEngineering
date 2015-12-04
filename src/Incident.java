@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Incident {
 	
 	private int incidentNumber; // The number of the incident
-	private int time; // The time the incident occurred
+	private String time; // The time the incident occurred
 	private String date; // The date the incident occurred
 	private IncidentType type; // The type of incident
 	private Location location; // The location of the incident
@@ -17,7 +17,7 @@ public class Incident {
 	private IncidentNumberingSystem numbering = new IncidentNumberingSystem();
 	
 	
-	public Incident(int time, String date, IncidentType type, Location location,
+	public Incident(String time, String date, IncidentType type, Location location,
 			ArrayList<Vehicle> assignedVehicles, UrgencyLevel urgency){
 		this.time = time;
 		this.date = date;
@@ -49,7 +49,7 @@ public class Incident {
 	 * Returns the time that the incident was submitted by the user
 	 * @return The time the incident was submitted
 	 */
-	public int getTime(){
+	public String getTime(){
 		return time;
 	}
 	
@@ -57,7 +57,7 @@ public class Incident {
 	 * Sets the time that the incident was submitted by the user
 	 * @param newTime The time submitted by the user.
 	 */
-	public void setTime(int newTime){
+	public void setTime(String newTime){
 		time = newTime;
 	}
 

@@ -55,7 +55,7 @@ public class Log {
 	public void setLogEntry(Incident incident)
 	{
 		int incidentNum = incident.getNumber();
-		int time = incident.getTime();
+		String time = incident.getTime();
 		String date = incident.getDate();
 		IncidentType type = incident.getType();
 		Location location = incident.getLocation();

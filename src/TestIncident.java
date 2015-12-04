@@ -27,7 +27,7 @@ public class TestIncident
 		vehicle2 = new Vehicle(VehicleType.FIRE_TRUCK, location);
 		assignedVehicles.add(vehicle1);
 		assignedVehicles.add(vehicle2);
-		incident = new Incident(900,"December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
+		incident = new Incident("3:20PM","December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
 	}
 
 	@After
@@ -62,9 +62,9 @@ public class TestIncident
 	@Test
 	public void testSetTime() 
 	{
-		incident.setTime(1000);
+		incident.setTime("3:30PM");
 		assertEquals(1000,incident.getTime());
-		incident.setTime(900);
+		incident.setTime("3:20PM");
 	}
 
 	@Test
