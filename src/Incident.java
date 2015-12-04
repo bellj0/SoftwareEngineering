@@ -20,7 +20,7 @@ public class Incident {
 	private IncidentNumberingSystem numbering = new IncidentNumberingSystem();
 	
 	
-	public Incident(String time, String date, IncidentType type, Location location,
+	public Incident(IncidentType type, Location location,
 			ArrayList<Vehicle> assignedVehicles, UrgencyLevel urgency){
 		this.time = time;
 		this.date = date;

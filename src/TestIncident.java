@@ -27,7 +27,7 @@ public class TestIncident
 		vehicle2 = new Vehicle(VehicleType.FIRE_TRUCK, location);
 		assignedVehicles.add(vehicle1);
 		assignedVehicles.add(vehicle2);
-		incident = new Incident("3:20PM","December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
+		incident = new Incident(IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
 	}
 
 	@After
