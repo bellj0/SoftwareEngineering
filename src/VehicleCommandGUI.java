@@ -199,20 +199,20 @@ public class VehicleCommandGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
-				getContentPane().remove(bs);
-
-				background = null;
-		        locImage = null;
-		        try {
-		            background = ImageIO.read( new File( "src//rowanMap.jpg" ) );
-		            locImage = ImageIO.read( new File( "src//location.jpg" ) );
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-		         
-		        mapImage bs = new mapImage( background );
-		        bs.repaint();
-				getContentPane().add(bs, BorderLayout.NORTH);
+//				getContentPane().remove(bs);
+//
+//				background = null;
+//		        locImage = null;
+//		        try {
+//		            background = ImageIO.read( new File( "src//rowanMap.jpg" ) );
+//		            locImage = ImageIO.read( new File( "src//location.jpg" ) );
+//		        } catch (IOException e) {
+//		            e.printStackTrace();
+//		        }
+//		         
+//		        mapImage bs = new mapImage( background );
+//		        bs.repaint();
+//				getContentPane().add(bs, BorderLayout.NORTH);
 
 				resetType = new JCheckBox();
 				for (Component comp : recVehicleBoxes.getComponents()) {
@@ -340,26 +340,24 @@ public class VehicleCommandGUI extends JFrame {
 				incidentLocation = (Location) listOfLocations
 						.getSelectedValue();
 				
-				getContentPane().remove(bs);
-				
-				background = null;
-		        locImage = null;
-		        try {
-		            background = ImageIO.read( new File( "src//rowanMap.jpg" ) );
-		            locImage = ImageIO.read( new File( "src//location.jpg" ) );
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-		         
-		        mapImage bs = new mapImage( background );
-		        getContentPane().add(bs, BorderLayout.NORTH);
-		        
-		        bs.addSprite(locImage, incidentLocation);
-		        
-				
-							
-				pack();
-				repaint();
+//				getContentPane().remove(bs);
+//				
+//				background = null;
+//		        locImage = null;
+//		        try {
+//		            background = ImageIO.read( new File( "src//rowanMap.jpg" ) );
+//		            locImage = ImageIO.read( new File( "src//location.jpg" ) );
+//		        } catch (IOException e) {
+//		            e.printStackTrace();
+//		        }
+//		         
+//		        mapImage bs = new mapImage( background );
+//		        getContentPane().add(bs, BorderLayout.NORTH);
+//		        
+//		        bs.addLocImage(locImage, incidentLocation);
+//		        	
+//				pack();
+//				repaint();
 				
 				
 				
@@ -413,7 +411,8 @@ public class VehicleCommandGUI extends JFrame {
 	      }
 	      LocImage s = null;
 	      int size = sprites.size();
-	      for ( int i = 0; i < size; i++ ) {
+	      for ( int i = 0; i < size; i++ ) 
+	      {
 	          s = (LocImage)sprites.get( i );
 	          s.paintLocImage( g );
 	      }
@@ -429,7 +428,7 @@ public class VehicleCommandGUI extends JFrame {
 	        repaint(); 
 	    }
 	     
-	    public void addSprite( Image sprite, Location location ) {
+	    public void addLocImage( Image sprite, Location location ) {
 	        LocImage s = new LocImage( sprite );
 	        s.setX( location.getPos_x()-10 );
 	        s.setY( location.getPos_y()-10 );
@@ -503,14 +502,6 @@ public class VehicleCommandGUI extends JFrame {
 	         
 	        public void setYSpeed( int dy ) {
 	            this.dy = dy;
-	        }
-	         
-	        public void setBorderOn( boolean b ) {
-	            drawBorder = b;
-	        }
-	         
-	        public boolean isBorderOn() {
-	            return drawBorder;
 	        }
 	    }
 	    
