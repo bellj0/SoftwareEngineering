@@ -9,27 +9,20 @@ import java.io.FilenameFilter;
 public class IncidentNumberingSystem {
 	private Incident incident;
 	
-	public IncidentNumberingSystem(Incident incident){
-		this.incident = incident;
-	}
-	
-	/**
-	 * Used by other classes to set the number of an incident.
-	 */
-	public void setNumber(){
-		incrementAndAssign(incident);
+	public IncidentNumberingSystem(){
+		
 	}
 	
 	/**
 	 * Finds the most recent incident number and increments it by one
 	 */
-	private void incrementAndAssign(Incident incident){
+	public int incrementNumber(){
 		int number = 0;
 		String path = "/Logs/";
 		File[] files = finder(path);
 		number = files.length;
 		
-		incident.setNumber((number+1));
+		return (number+1);
 	}
 	
 	/**

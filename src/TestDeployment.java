@@ -26,7 +26,7 @@ public class TestDeployment {
 		vehicles.add(v1);
 		vehicles.add(v2);
 		
-		incident = new Incident(3, 1200, "Test Date", IncidentType.STABBING, Location.LIBRARY, vehicles, UrgencyLevel.HIGH);
+		incident = new Incident( 1200, "Test Date", IncidentType.STABBING, Location.LIBRARY, vehicles, UrgencyLevel.HIGH);
 	}
 
 	@After

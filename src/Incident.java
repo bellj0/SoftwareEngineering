@@ -14,11 +14,11 @@ public class Incident {
 	private Location location; // The location of the incident
 	private ArrayList<Vehicle> assignedVehicles = new ArrayList<>(); // The vehicles assigned to be deployed to the incident
 	private UrgencyLevel urgency; // The urgency of the incident
+	private IncidentNumberingSystem numbering = new IncidentNumberingSystem();
 	
 	
-	public Incident(int incidentNumber, int time, String date, IncidentType type, Location location,
+	public Incident(int time, String date, IncidentType type, Location location,
 			ArrayList<Vehicle> assignedVehicles, UrgencyLevel urgency){
-		this.incidentNumber = incidentNumber;
 		this.time = time;
 		this.date = date;
 		this.type = type;
@@ -26,6 +26,7 @@ public class Incident {
 		this.assignedVehicles = assignedVehicles;
 		this.urgency = urgency;
 		
+		setNumber(numbering.incrementNumber());
 	}
 	/**
 	 * Returns the number of the incident.

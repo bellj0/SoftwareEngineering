@@ -23,7 +23,7 @@ public class TestAvailabilityManager
 		assignedVehicles = new ArrayList<>();
 		vehicle = new Vehicle(VehicleType.STANDARD_CRUISER,location);
 		assignedVehicles.add(vehicle);
-		incident = new Incident(1,900,"December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
+		incident = new Incident(900,"December 4th, 2015",IncidentType.STABBING,location,assignedVehicles,UrgencyLevel.HIGH);
 		manager = new AvailabilityManager(incident,vehicle,location);
 	}
 
