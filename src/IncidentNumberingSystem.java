@@ -18,7 +18,7 @@ public class IncidentNumberingSystem {
 	 */
 	public int incrementNumber(){
 		int number = 0;
-		String path = "/Logs/";
+		String path = "src//Logs";
 		File[] files = finder(path);
 		number = files.length;
 		
