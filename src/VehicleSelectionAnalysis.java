@@ -7,6 +7,8 @@ public class VehicleSelectionAnalysis
 {
 	private Vehicle selectedVehicle;
 	private VehicleData vehicleData = VehicleData.getInstance();
+	private AvailabilityManager manager;
+	private Incident incident;
 	
 
 	
@@ -16,9 +18,10 @@ public class VehicleSelectionAnalysis
  * @param type The type of vehicle that is needed.
  * @param location The location of the incident. 
  */
-	public VehicleSelectionAnalysis(VehicleType type, VehicleData vehicleData, Location location)
+	public VehicleSelectionAnalysis(Incident incident, Location location)
 	{
-		setSelectedVehicle(getClosestVehicle(type, vehicleData, location));
+		setSelectedVehicle(getClosestVehicle(incident, location));
+
 	}
 
 	/**
@@ -27,7 +30,7 @@ public class VehicleSelectionAnalysis
 	 * @param location The location of the incident.
 	 * @return Vehicle object representing the closest available vehicle to the specified location.
 	 */
-		public Vehicle getClosestVehicle(VehicleType type, VehicleData vehicleData, Location location)
+		public Vehicle getClosestVehicle(Incident incident, Location location)
 		{
 			Vehicle closest = null;
 			int currentDistance;
@@ -50,10 +53,12 @@ public class VehicleSelectionAnalysis
 				{
 					smallestDistance = currentDistance;
 					closest = v;
+					
 				}
 			}
 		}
-					
+			manager = new AvailabilityManager(incident, closest, location);
+			manager.manage();
 			return closest;
 			
 		}
