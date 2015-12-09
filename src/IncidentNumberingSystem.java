@@ -20,9 +20,16 @@ public class IncidentNumberingSystem {
 		int number = 0;
 		String path = "src//Logs";
 		File[] files = finder(path);
-		number = files.length;
 		
-		return (number+1);
+		if(files == null)
+		{
+			return (number+1);
+		}
+		else
+		{
+			number = files.length;
+			return (number+1);
+		}
 	}
 	
 	/**

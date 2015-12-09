@@ -94,7 +94,7 @@ public class Vehicle
  */
 	public void setName()
 	{
-		this.name = this.getVehicleType().toString() + this.getVehicleNumber();
+		this.name = this.getVehicleType().toString() + "_" + this.getVehicleNumber();
 		vehicleNumber++;
 	}
 

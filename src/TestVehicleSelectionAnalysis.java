@@ -26,7 +26,7 @@ public class TestVehicleSelectionAnalysis
 		vehicleData.addToAll(vehicle1);
 		vehicleData.addToAll(vehicle2);
 		vehicleData.updateAvailable();
-		vehicleSelect = new VehicleSelectionAnalysis(vehicle1.getVehicleType(), vehicleData, loc1);
+		vehicleSelect = new VehicleSelectionAnalysis(vehicle1.getVehicleType(), loc1);
 	}
 
 	@After
@@ -51,7 +51,7 @@ public class TestVehicleSelectionAnalysis
 	@Test
 	public void testGetClosestVehicle() 
 	{
-		Vehicle testVehicle = vehicleSelect.getClosestVehicle(VehicleType.K9, vehicleData, loc3);
+		Vehicle testVehicle = vehicleSelect.getClosestVehicle(VehicleType.K9, loc3);
 		assert(testVehicle.equals(vehicle1, testVehicle));
 	}
 

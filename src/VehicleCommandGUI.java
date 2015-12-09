@@ -147,6 +147,8 @@ public class VehicleCommandGUI extends JFrame {
 
 		btnReportIncident = new JButton("Report Incident");
 		btnReportIncident.addMouseListener(new MouseAdapter() {
+			private AvailabilityManager manager;
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (!(incidentSelectionComboBox.getSelectedItem() == null || listOfLocations
@@ -178,7 +180,7 @@ public class VehicleCommandGUI extends JFrame {
 					}
 					for(VehicleType car : typeOfVehicleNeeded)
 					{
-						VehicleSelectionAnalysis vehicleChooser = new VehicleSelectionAnalysis(car, vehicleInfo.getInstance(), (Location)listOfLocations.getSelectedValue());
+						VehicleSelectionAnalysis vehicleChooser = new VehicleSelectionAnalysis(car, (Location)listOfLocations.getSelectedValue());
 						incVehicles.add(vehicleChooser.getSelectedVehicle());
 					}
 
@@ -189,6 +191,12 @@ public class VehicleCommandGUI extends JFrame {
 							(Location)listOfLocations.getSelectedValue(),
 							incVehicles,
 							(UrgencyLevel)listOfIncidentLevels.getSelectedValue());
+					
+					for (Vehicle car : incident.getVehicles())
+					{
+						manager = new AvailabilityManager(incident, car, incident.getLocation());
+						manager.manage();
+					}
 
 					//Creates the log
 					Log log = new Log("Log " + incident.getNumber());
@@ -199,6 +207,10 @@ public class VehicleCommandGUI extends JFrame {
 					{
 						e1.printStackTrace();
 					}
+					
+					// message pops up to let the user know that the incident was successfully reported
+					JOptionPane.showMessageDialog(null, incident.getType() + " at " + incident.getLocation().toString() 
+							+ " was successfully reported.", "Success!!", JOptionPane.INFORMATION_MESSAGE);
 					
 					//resets the GUI buttons
 					resetType = new JCheckBox();

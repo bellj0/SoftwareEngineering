@@ -63,7 +63,7 @@ public class Incident {
 	 * @param newTime The time submitted by the user.
 	 */
 	private void setTime(){
-		DateFormat timeFormat = new SimpleDateFormat("h:ma");
+		DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
         Date timeT = new Date();
         time = timeFormat.format(timeT).toString();
 	}

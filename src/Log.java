@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
 
 /**
  * 
@@ -64,7 +66,7 @@ public class Log {
 		
 		// Log Entry example: Incident: 01 | Date: November 19 2015 | Time: 3:20PM | Type: Stabbing | Location: James Hall | Responding Vehicle(s) SC01, SC02
 		this.logEntry = "Incident " + incidentNum + " | " + "Date: " + date + " | " + "Time: " + time + " | " + "Type: " + type + " | "
-				+ "Location: " + location + "Responding Vehicle(s) " + getRespondingVehicles(assignedVehicles);
+				+ "Location: " + location + " | " + "Responding Vehicle(s) : " + getRespondingVehicles(assignedVehicles);
 	}
 	
 	/**
@@ -80,7 +82,7 @@ public class Log {
 		for (Vehicle vehicle : assignedVehicles)
 		{
 			// Appends the vehicles's type and assigned number to the string
-			respondingVehicles += (vehicle.getVehicleType().toString() + vehicle.getVehicleNumber() + " ");
+			respondingVehicles += (vehicle.getName() + " ");
 		}
 		
 		return respondingVehicles;
@@ -97,6 +99,12 @@ public class Log {
 		
 		try 
 		{
+			// checks to see if the Logs folder has been created yet.
+			// if it doesn't exist, it is created in the src folder
+			
+			File file = new File("src\\Logs\\test.txt");
+			file.getParentFile().mkdir();
+			
 			// Uses the logger's fileName variable to write to a specified log file.
 			// If the file doesn't exist it will create a new file
 			// If the file contains data the writer will append the new data
