@@ -1,7 +1,5 @@
 import java.awt.*;
-import java.io.*;
 
-import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,24 +8,12 @@ import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
-import java.util.Vector;
 
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
-
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
 
 public class VehicleCommandGUI extends JFrame {
 
@@ -48,8 +34,8 @@ public class VehicleCommandGUI extends JFrame {
 	private JPanel locationSelection;
 	private JLabel lblIncidentUrgencySelection;
 	private JLabel lblLocationSelection;
-	private JList listOfLocations;
-	private JList listOfIncidentLevels;
+	private JList<Object> listOfLocations;
+	private JList<Object> listOfIncidentLevels;
 	private JComboBox<IncidentType> incidentSelectionComboBox;
 	private Component verticalStrut_1;
 	private Component verticalStrut_2;
@@ -110,7 +96,7 @@ public class VehicleCommandGUI extends JFrame {
 		recVehicle.setToolTipText("Additional Vehicles");
 		recVehicle.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
 
-		JLabel recVehiclesLabel = new JLabel("Additional Vehicle Types");
+		JLabel recVehiclesLabel = new JLabel("Additional Vehicles Requested");
 		recVehiclesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JPanel recVehicleBoxes = new JPanel();
@@ -300,13 +286,13 @@ public class VehicleCommandGUI extends JFrame {
 		verticalStrut_4 = Box.createVerticalStrut(3);
 		incidentSelection.add(verticalStrut_4);
 
-		lblIncidentUrgencySelection = new JLabel("Incident Urgency Level");
+		lblIncidentUrgencySelection = new JLabel("   Incident Urgency Level   ");
 		lblIncidentUrgencySelection.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblIncidentUrgencySelection
 		.setHorizontalAlignment(SwingConstants.CENTER);
 		incidentSelection.add(lblIncidentUrgencySelection);
 
-		listOfIncidentLevels = new JList(UrgencyLevel.values());
+		listOfIncidentLevels = new JList<Object>(UrgencyLevel.values());
 		listOfIncidentLevels.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
