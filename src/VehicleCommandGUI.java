@@ -63,7 +63,7 @@ public class VehicleCommandGUI extends JFrame {
 	private BufferedImage mapDisplay;
 	private BufferedImage locDisplay;
 	private BufferedImage closestDisplay;
-	private mapImage bs;
+	private MapImage bs;
 	
 	private VehicleSelectionAnalysis carChooser;
 
@@ -95,7 +95,7 @@ public class VehicleCommandGUI extends JFrame {
 			e.printStackTrace();
 		}
 
-		bs = new mapImage( mapDisplay );
+		bs = new MapImage( mapDisplay );
 		getContentPane().add(bs, BorderLayout.NORTH);
 
 
@@ -224,7 +224,7 @@ public class VehicleCommandGUI extends JFrame {
 						eRR.printStackTrace();
 					}
 
-					bs = new mapImage( mapDisplay );
+					bs = new MapImage( mapDisplay );
 					getContentPane().add(bs, BorderLayout.NORTH);
 				}
 			}
@@ -262,7 +262,7 @@ public class VehicleCommandGUI extends JFrame {
 					e.printStackTrace();
 				}
 
-				mapImage bs = new mapImage(mapDisplay);
+				MapImage bs = new MapImage(mapDisplay);
 				getContentPane().add(bs, BorderLayout.NORTH);
 
 				resetType = new JCheckBox();
@@ -405,7 +405,7 @@ public class VehicleCommandGUI extends JFrame {
 					{
 						er.printStackTrace();
 					}
-					bs = new mapImage(mapDisplay);
+					bs = new MapImage(mapDisplay);
 					getContentPane().add(bs, BorderLayout.NORTH);
 					
 					carChooser = new VehicleSelectionAnalysis(VehicleType.STANDARD_CRUISER,incidentLocation);
@@ -428,7 +428,7 @@ public class VehicleCommandGUI extends JFrame {
 					{
 						er.printStackTrace();
 					}
-					bs = new mapImage(mapDisplay);
+					bs = new MapImage(mapDisplay);
 					getContentPane().add(bs, BorderLayout.NORTH);
 				}
 
@@ -468,7 +468,7 @@ public class VehicleCommandGUI extends JFrame {
 					e.printStackTrace();
 				}
 
-				bs = new mapImage(mapDisplay);
+				bs = new MapImage(mapDisplay);
 				getContentPane().add(bs, BorderLayout.NORTH);
 				
 				carChooser = new VehicleSelectionAnalysis(VehicleType.STANDARD_CRUISER,incidentLocation);

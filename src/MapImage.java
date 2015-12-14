@@ -6,7 +6,7 @@ import java.util.Vector;
 
 import javax.swing.JComponent;
 
-	public class mapImage extends JComponent {
+	public class MapImage extends JComponent {
 
 		/**
 		 * 
@@ -15,11 +15,11 @@ import javax.swing.JComponent;
 		private Image background;
 		private Vector<LocImage> sprites;
 		
-		public mapImage() {
+		public MapImage() {
 			this( null );
 		}
 
-		public mapImage( Image background ) {
+		public MapImage( Image background ) {
 			this.background = background;
 			sprites = new Vector<LocImage>();
 		}
