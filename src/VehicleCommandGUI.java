@@ -31,12 +31,10 @@ import java.beans.PropertyChangeEvent;
 
 public class VehicleCommandGUI extends JFrame {
 
-	private ImageIcon rowanMap;
-	private JLabel mapLabel;
-
-	private ImageIcon closestVehicle;
-	private ImageIcon incLocation;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JCheckBox vehicleType;
 	private JCheckBox resetType;
@@ -52,7 +50,6 @@ public class VehicleCommandGUI extends JFrame {
 	private JLabel lblLocationSelection;
 	private JList listOfLocations;
 	private JList listOfIncidentLevels;
-	private Component verticalStrut;
 	private JComboBox<IncidentType> incidentSelectionComboBox;
 	private Component verticalStrut_1;
 	private Component verticalStrut_2;
@@ -63,11 +60,12 @@ public class VehicleCommandGUI extends JFrame {
 	private ArrayList<VehicleType> recommendedVehicleTypes;
 	private ArrayList<VehicleType> typeOfVehicleNeeded;
 	private ArrayList<Vehicle> incVehicles;
-	private Incident incidentHolder;
-	private VehicleSelectionAnalysis vehicleChooser;
-	private JLabel locationLabel;
-	private static BufferedImage background;
-	private static BufferedImage locImage;
+	private BufferedImage mapDisplay;
+	private BufferedImage locDisplay;
+	private BufferedImage closestDisplay;
+	private mapImage bs;
+	
+	private VehicleSelectionAnalysis carChooser;
 
 	/**
 	 * Create the frame.
@@ -79,16 +77,6 @@ public class VehicleCommandGUI extends JFrame {
 		typeOfVehicleNeeded = new ArrayList<>();
 		recommendedVehicleTypes = new ArrayList<>();
 
-		background = null;
-		locImage = null;
-		try {
-			background = ImageIO.read( new File( "src//rowanMap.jpg" ) );
-			locImage = ImageIO.read( new File( "src//location.jpg" ) );
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-
 		setTitle("Vehicle Command and Control System");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,18 +86,16 @@ public class VehicleCommandGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(5, 5));
+		
 
-		background = null;
-		locImage = null;
+		mapDisplay = null;
 		try {
-			background = ImageIO.read( new File( "src//rowanMap.jpg" ) );
-			locImage = ImageIO.read( new File( "src//location.jpg" ) );
+			mapDisplay = ImageIO.read( new File( "src//rowanMap.jpg" ) );
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		mapImage bs = new mapImage( background );
-
+		bs = new mapImage( mapDisplay );
 		getContentPane().add(bs, BorderLayout.NORTH);
 
 
@@ -121,10 +107,10 @@ public class VehicleCommandGUI extends JFrame {
 
 		JPanel recVehicle = new JPanel();
 		recVehicle.setLayout(new BorderLayout(0, 10));
-		recVehicle.setToolTipText("Recommended Vehicles");
+		recVehicle.setToolTipText("Additional Vehicles");
 		recVehicle.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
 
-		JLabel recVehiclesLabel = new JLabel("Recommended Vehicle Types");
+		JLabel recVehiclesLabel = new JLabel("Additional Vehicle Types");
 		recVehiclesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JPanel recVehicleBoxes = new JPanel();
@@ -229,7 +215,17 @@ public class VehicleCommandGUI extends JFrame {
 					incidentSelectionComboBox.setEnabled(false);
 
 					recommendedVehicleTypes.clear();
-					repaint();
+					
+					getContentPane().remove(bs);
+					mapDisplay = null;
+					try {
+						mapDisplay = ImageIO.read( new File( "src//rowanMap.jpg" ) );
+					} catch (IOException eRR) {
+						eRR.printStackTrace();
+					}
+
+					bs = new mapImage( mapDisplay );
+					getContentPane().add(bs, BorderLayout.NORTH);
 				}
 			}
 		});
@@ -255,20 +251,19 @@ public class VehicleCommandGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
-				//				getContentPane().remove(bs);
-				//
-				//				background = null;
-				//		        locImage = null;
-				//		        try {
-				//		            background = ImageIO.read( new File( "src//rowanMap.jpg" ) );
-				//		            locImage = ImageIO.read( new File( "src//location.jpg" ) );
-				//		        } catch (IOException e) {
-				//		            e.printStackTrace();
-				//		        }
-				//		         
-				//		        mapImage bs = new mapImage( background );
-				//		        bs.repaint();
-				//				getContentPane().add(bs, BorderLayout.NORTH);
+				getContentPane().remove(bs);
+
+				mapDisplay = null;
+				try {
+					mapDisplay = ImageIO.read(new File("src//rowanMap.jpg"));
+				} 
+				catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+
+				mapImage bs = new mapImage(mapDisplay);
+				getContentPane().add(bs, BorderLayout.NORTH);
 
 				resetType = new JCheckBox();
 				for (Component comp : recVehicleBoxes.getComponents()) {
@@ -286,7 +281,6 @@ public class VehicleCommandGUI extends JFrame {
 				incidentSelectionComboBox.setEnabled(false);
 
 				recommendedVehicleTypes.clear();
-				repaint();
 			}
 		});
 
@@ -380,40 +374,110 @@ public class VehicleCommandGUI extends JFrame {
 
 		locationSelection.add(lblLocationSelection, BorderLayout.NORTH);
 
-		listOfLocations = new JList(Location.values());
+		listOfLocations = new JList<Object>(Location.values());
+		listOfLocations.addListSelectionListener(new ListSelectionListener() 
+		{
+			public void valueChanged(ListSelectionEvent e) 
+			{
+				Location incidentLocation;
+				
+				getContentPane().remove(bs);
+				mapDisplay = null;
+				locDisplay = null;
+				closestDisplay = null;
+				
+				if(!listOfLocations.isSelectionEmpty())
+				{
+				incidentLocation = (Location) listOfLocations
+						.getSelectedValue();
+					try 
+					{
+						mapDisplay = ImageIO
+							.read(new File("src//rowanMap.jpg"));
+						locDisplay = ImageIO
+								.read(new File("src//location.jpg"));
+						
+						closestDisplay = ImageIO
+								.read(new File("src//closest.jpg"));
+
+					} 
+					catch (IOException er) 
+					{
+						er.printStackTrace();
+					}
+					bs = new mapImage(mapDisplay);
+					getContentPane().add(bs, BorderLayout.NORTH);
+					
+					carChooser = new VehicleSelectionAnalysis(VehicleType.STANDARD_CRUISER,incidentLocation);
+					bs.addLocImage(locDisplay, incidentLocation);
+					bs.addLocImage(closestDisplay, carChooser.getClosestVehicle(VehicleType.STANDARD_CRUISER, incidentLocation).getLocation());
+					
+					
+					
+				}
+				else
+				{
+					try 
+					{
+						mapDisplay = ImageIO
+							.read(new File("src//rowanMap.jpg"));
 
 
+					} 
+					catch (IOException er) 
+					{
+						er.printStackTrace();
+					}
+					bs = new mapImage(mapDisplay);
+					getContentPane().add(bs, BorderLayout.NORTH);
+				}
 
+				
 
+				pack();
+				repaint();
+				
+				
+			}
+		});
+		
 		// Will be used to repaint the map with the location indicated (if I can
 		// figure out how)
 		listOfLocations.addMouseListener(new MouseAdapter() {
-
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Location incidentLocation;
 				incidentLocation = (Location) listOfLocations
 						.getSelectedValue();
+				
+				getContentPane().remove(bs);
+				mapDisplay = null;
+				try 
+				{
+					mapDisplay = ImageIO
+							.read(new File("src//rowanMap.jpg"));
+					locDisplay = ImageIO
+							.read(new File("src//location.jpg"));
+					
+					closestDisplay = ImageIO
+							.read(new File("src//closest.jpg"));
+				} 
+				catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
 
-				//				getContentPane().remove(bs);
-				//				
-				//				background = null;
-				//		        locImage = null;
-				//		        try {
-				//		            background = ImageIO.read( new File( "src//rowanMap.jpg" ) );
-				//		            locImage = ImageIO.read( new File( "src//location.jpg" ) );
-				//		        } catch (IOException e) {
-				//		            e.printStackTrace();
-				//		        }
-				//		         
-				//		        mapImage bs = new mapImage( background );
-				//		        getContentPane().add(bs, BorderLayout.NORTH);
-				//		        
-				//		        bs.addLocImage(locImage, incidentLocation);
-				//		        	
-				//				pack();
-				//				repaint();
+				bs = new mapImage(mapDisplay);
+				getContentPane().add(bs, BorderLayout.NORTH);
+				
+				carChooser = new VehicleSelectionAnalysis(VehicleType.STANDARD_CRUISER,incidentLocation);
+				bs.addLocImage(locDisplay, incidentLocation);
+				bs.addLocImage(closestDisplay, carChooser.getClosestVehicle(VehicleType.STANDARD_CRUISER, incidentLocation).getLocation());
+				
+
+				pack();
+				repaint();
 			}
 		});
 
@@ -427,165 +491,5 @@ public class VehicleCommandGUI extends JFrame {
 		contentPane.add(buttonsPanel, BorderLayout.SOUTH);
 
 	}
-
-
-	public class mapImage extends JComponent {
-
-		private Image background;
-		private Vector<LocImage> sprites;
-		private Runnable repainter;
-		private Random random;
-
-		public mapImage() {
-			this( null );
-		}
-
-		public mapImage( Image background ) {
-			this.background = background;
-			sprites = new Vector<LocImage>();
-			random = new Random();
-			repainter = new BounceUpdate();
-			Thread t = new Thread( repainter );
-			t.start();
-		}
-
-		public Dimension getPreferredSize() {
-			Dimension d = super.getPreferredSize();
-			if( background != null ) {            
-				d = new Dimension( background.getWidth( this ), background.getHeight( this ) );
-			} 
-			return( d );
-		}
-
-		public void paintComponent( Graphics g ) {      
-			if ( background != null ) {          
-				g.drawImage( background, 0, 0, this );        
-			}
-			LocImage s = null;
-			int size = sprites.size();
-			for ( int i = 0; i < size; i++ ) 
-			{
-				s = (LocImage)sprites.get( i );
-				s.paintLocImage( g );
-			}
-		}
-
-		public Image getBackgroundImage() {
-			return background;
-		}
-
-		public void setBackgroundImage( Image i ) {
-			background = i;
-			validate();
-			repaint(); 
-		}
-
-		public void addLocImage( Image sprite, Location location ) {
-			LocImage s = new LocImage( sprite );
-			s.setX( location.getPos_x()-10 );
-			s.setY( location.getPos_y()-10 );
-			sprites.add( s );
-			repaint();
-		}
-
-
-		private class LocImage {
-			private boolean drawBorder;
-			private Image image;
-			private int x, y, dx, dy;
-
-			public LocImage( Image image ) {
-				this.image = image;
-			}
-
-			public void paintLocImage( Graphics g ) {
-				if ( image != null ) {
-					g.drawImage( image, x, y, null );
-				}
-				if ( drawBorder ) {
-					g.setColor( Color.red );
-					g.drawRect( x, y, getWidth(), getHeight() );
-				}
-			}
-
-			public int getX() {
-				return x;
-			}
-
-			public void setX( int x ) {
-				this.x = x;
-			}
-
-			public int getY() {
-				return y;
-			}
-
-			public void setY( int y ) {
-				this.y = y;
-			}
-
-			public int getWidth() {
-				int w = 0;
-				if ( image != null ) {
-					w = image.getWidth( null );
-				}
-				return w;
-			}
-
-			public int getHeight() {
-				int h = 0;
-				if ( image != null ) {
-					h = image.getHeight( null );
-				}
-				return h;
-			}
-
-			public int getXSpeed() {
-				return dx;
-			}
-
-			public void setXSpeed( int dx ) {
-				this.dx = dx;
-			}
-
-			public int getYSpeed() {
-				return dy;
-			}
-
-			public void setYSpeed( int dy ) {
-				this.dy = dy;
-			}
-		}
-
-		private class BounceUpdate implements Runnable {
-			public void run() {
-				while ( true ) {
-					try {
-						Thread.sleep( 80 );
-					} catch ( InterruptedException x ) {}
-					Dimension size = getPreferredSize();
-					int indices = sprites.size();
-					LocImage s = null;
-					for ( int i = 0; i < indices; i++ ) {
-						s = ( LocImage )sprites.get( i );
-						int x = s.getX() + s.getXSpeed();
-						int y = s.getY() + s.getYSpeed();
-						if ( x + s.getWidth() > size.width || x < 0 ) {
-							s.setXSpeed( -s.getXSpeed() );  
-						}
-						if ( y + s.getHeight() > size.height || y < 0 ) {
-							s.setYSpeed( -s.getYSpeed() );
-						}
-						s.setX( s.getX() + s.getXSpeed() );
-						s.setY( s.getY() + s.getYSpeed() );
-					}
-					repaint();
-				}
-			}
-		}
-
-
-	}
-
 }
 

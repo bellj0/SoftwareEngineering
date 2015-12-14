@@ -7,11 +7,8 @@ public class VehicleSelectionAnalysis
 {
 	private Vehicle selectedVehicle;
 	private VehicleData vehicleData = VehicleData.getInstance();
-//	private AvailabilityManager manager;
-//	private Incident incident;
-	
 
-	
+
 
 /**
  * Constructor that chooses and sets the selected vehicle based on the type of vehicle needed and the incident's location.
@@ -34,7 +31,7 @@ public class VehicleSelectionAnalysis
 		{
 			Vehicle closest = null;
 			int currentDistance;
-			int smallestDistance = 0;
+			int smallestDistance = -1;
 			
 		for (Vehicle v : vehicleData.returnAvailable()) 
 		{
@@ -44,7 +41,7 @@ public class VehicleSelectionAnalysis
 						location);
 				currentDistance = travelCalc.calculateDistance();
 
-				if (smallestDistance == 0) 
+				if (smallestDistance == -1) 
 				{
 					smallestDistance = currentDistance;
 					closest = v;
@@ -57,8 +54,6 @@ public class VehicleSelectionAnalysis
 				}
 			}
 		}
-//		manager = new AvailabilityManager(incident, closest, location);
-//		manager.manage();
 			return closest;
 			
 		}
