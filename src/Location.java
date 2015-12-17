@@ -1,4 +1,9 @@
-
+/**
+ * This enum holds the x/y position of a location in reference to the
+ * map located in the gui. These positions are vital to calculating the
+ * distance between an incident and a vehicle.
+ *  @author Joshua Bell
+ */
 public enum Location 
 {
 	LIBRARY(370,232), 		REC_CENTER(329,153), 
@@ -23,32 +28,57 @@ public enum Location
 	private int pos_x;   // position on map in x
 	private int pos_y; // position on map in y
 
+	/**
+	 * Enum constructor that takes the x- and y- positions of the location
+	 * as parameters.
+	 * @param pos_x
+	 * @param pos_y
+	 */
 	Location(int pos_x, int pos_y) 
     {
         this.pos_x = pos_x;
         this.pos_y = pos_y;
     }
 	
+    /**
+     * Returns the x-position of the location.
+     * @return
+     */
     public int getPos_x() 
     {
 		return pos_x;
 	}
 	
+    /**
+     * Returns the y-position of the location.
+     * @return
+     */
     public int getPos_y() 
     {
 		return pos_y;
 	}    
 	
+    /**
+     * Used to change the x-position of a location.
+     * @param pos_x
+     */
     public void setPos_x(int pos_x) 
     {
 		this.pos_x = pos_x;
 	}
 
+	/**
+	 * Used to change the y-position of a location.
+	 * @param pos_y
+	 */
 	public void setPos_y(int pos_y) 
 	{
 		this.pos_y = pos_y;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Enum#toString()
+	 */
 	@Override
 	public String toString() 
 	{

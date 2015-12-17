@@ -1,3 +1,8 @@
+/**
+ * This enum holds the different types of vehicles that are available to the
+ * dispatcher or police force.
+ *  @author Joshua Bell
+ */
 public enum VehicleType 
 {
 	STANDARD_CRUISER, 
