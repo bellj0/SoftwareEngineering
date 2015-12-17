@@ -6,7 +6,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-
+/**
+ * @author Stephanie
+ * Tests the methods in the Vehicle class
+ *
+ */
 public class TestVehicle 
 {
 	private Location loc1;

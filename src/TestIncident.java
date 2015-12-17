@@ -7,7 +7,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-
+/**
+ * @author Ryan
+ * Tests the methods in the Incident class
+ *
+ */
 public class TestIncident
 {
 	private Incident incident;

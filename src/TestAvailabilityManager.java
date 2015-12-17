@@ -8,7 +8,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-
+/**
+ * @author Ryan
+ * Tests the methods in the AvailabilityManager class
+ *
+ */
 public class TestAvailabilityManager
 {
 	private Incident incident;

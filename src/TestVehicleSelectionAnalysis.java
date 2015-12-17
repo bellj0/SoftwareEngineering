@@ -4,7 +4,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/**
+ * @author Stephanie
+ * Tests the methods in the VehicleSelectionAnalysis class
+ *
+ */
 public class TestVehicleSelectionAnalysis 
 {
 	private Location loc1;
